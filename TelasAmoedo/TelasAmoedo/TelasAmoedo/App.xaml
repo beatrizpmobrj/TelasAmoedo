@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TelasAmoedo.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="IconFacebook">&#xed37;</x:String>
+            <x:String x:Key="IconInstagram">&#xed46;</x:String>
+
+        </ResourceDictionary>
 
     </Application.Resources>
 </Application>
