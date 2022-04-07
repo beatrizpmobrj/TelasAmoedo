@@ -10,15 +10,15 @@
     
     <ContentPage.Content>
         <StackLayout Padding="30">
-            <Label Text="Nome" />
-            <Entry Placeholder="Rafael da Silva" />
-            <Label Text="Email" />
-            <Entry Placeholder="rafael@amoedo.com.br" />
-            <Label Text="CPF" />
-            <Entry Placeholder="000.000.000-00" />
-            <Label Text="Data de nascimento" />
+            <Label Text="Nome" TextColor="DarkRed" FontSize="18" />
+            <Entry Placeholder="Rafael da Silva" FontSize="18" />
+            <Label Text="Email" TextColor="DarkRed" FontSize="18" />
+            <Entry Placeholder="rafael@amoedo.com.br" FontSize="18" />
+            <Label Text="CPF" TextColor="DarkRed" FontSize="18" />
+            <Entry Placeholder="000.000.000-00" FontSize="18" />
+            <Label Text="Data de nascimento" TextColor="DarkRed" FontSize="18" />
             <DatePicker />
-            <Label Text="Sexo" />
+            <Label Text="Sexo" TextColor="DarkRed" FontSize="18" />
             <Picker />
             <StackLayout Orientation="Horizontal">
                 <CheckBox />
