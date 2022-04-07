@@ -11,7 +11,8 @@ namespace TelasAmoedo
         {
             InitializeComponent();
 
-            MainPage = new Login();
+            //MainPage = new Login();
+            MainPage = new Cadastro();
         }
 
         protected override void OnStart()
