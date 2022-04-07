@@ -17,11 +17,13 @@
             <Image Source="perfil.png"/>
         </Frame>
         <StackLayout Spacing="0" Padding="10,-2,-20,-10">
-            <Label Text="Olá, Beatriz" FontFamily="Others" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+            <Label Text="Olá, Beatriz" FontFamily="Others" FontAttributes="Bold" FontSize="20" 
+                   TextColor="White"/>
             <Label Text="Seu último acesso foi em 06/09/2021" FontFamily="Others" TextColor="White"/>
         </StackLayout>
     </FlexLayout>
-    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="50,-85,50,-50" Grid.Column="0" Grid.ColumnSpan="2" 
+    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="50,-85,50,-50" 
+                 Grid.Column="0" Grid.ColumnSpan="2" 
                      Grid.Row="1">
         <Grid RowDefinitions="Auto,Auto,*">
 
@@ -29,10 +31,26 @@
                    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" 
                    VerticalOptions="Center" Grid.Row="0"
                    VerticalTextAlignment="Center" Opacity="100" TextColor="White"/>
-            <Label Text="Pontos válidos disponíveis" TextColor="White" Grid.Row="1" FontFamily="Others" FontSize="20"/>
+            <Label Text="Pontos válidos disponíveis" TextColor="White" Grid.Row="1" 
+                   FontFamily="Others" FontSize="20"/>
             <Label Text="último lançamento em 10/07/2021" TextColor="White" Grid.Row="2" FontFamily="Others"
                        FontSize="15"/>
         </Grid>
     </StackLayout>
+        <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal"
+                     HorizontalOptions="CenterAndExpand" Padding="-80,-80,-100,0">
+            <Grid RowDefinitions="Auto" ColumnDefinitions="*,*,Auto">
+                <Label Text="5" FontFamily="Pontos" FontAttributes="Bold" FontSize="50"
+                   HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                   TextColor="White" Grid.Column="0" Grid.Row="0"
+                   />
+                <Label Text="|" FontFamily="Pontos" Grid.Column="1" Grid.Row="0" TextColor="White"
+                       FontSize="50" HorizontalTextAlignment="End" VerticalTextAlignment="Center"
+                       />
+                <Label Text="Pontos à expirar" Grid.Column="2" Grid.Row="0" TextColor="White"
+                       FontFamily="Others" FontSize="18" HorizontalTextAlignment="End" 
+                       HorizontalOptions="End" VerticalTextAlignment="Center" Padding="30,-30"/>
+            </Grid>
+        </StackLayout>
     </Grid>
 </ContentPage>
