@@ -1,4 +1,5 @@
 ﻿using System;
+using TelasAmoedo.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace TelasAmoedo
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Login();
         }
 
         protected override void OnStart()

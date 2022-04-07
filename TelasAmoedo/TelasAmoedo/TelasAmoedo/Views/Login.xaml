@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TelasAmoedo.Views.Login">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" BackgroundColor="DarkRed">
+                <Frame BackgroundColor="White" Opacity="0.5" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="350" WidthRequest="300">
+                    <StackLayout>
+                        <Label Text="Bem-vindo!" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                        <Entry Placeholder="Email" />
+                        <Entry Placeholder="Senha" IsPassword="True" />
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox />
+                            <Label VerticalOptions="Center" Text="Lembrar" />
+                            <Button HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" Text="Esqueci a senha?" />
+                        </StackLayout>
+                        <Button Text="LOGIN" BackgroundColor="White" Opacity="0.5" CornerRadius="7" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                            <Button Text="DIG" CornerRadius="7" />
+                            <Button Text="FACE" CornerRadius="7" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                            <Label Text="Ainda não tem conta" VerticalOptions="Center" />
+                            <Button Text="Cadastre-se" FontSize="12" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
