@@ -11,15 +11,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\BeauRivage-Regular.ttf" />
+    <None Remove="Fonts\JosefinSans-Bold.ttf" />
+    <None Remove="Fonts\JosefinSans-LightCopy.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\BeauRivage-Regular.ttf" />
+    <EmbeddedResource Include="Fonts\JosefinSans-Bold.ttf" />
+    <EmbeddedResource Include="Fonts\JosefinSans-LightCopy.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Xamarin.HotReload" Version="2.0.16" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Fonts\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\MenuPrincipal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
