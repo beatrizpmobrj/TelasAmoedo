@@ -19,8 +19,8 @@ namespace TelasAmoedo
             //MainPage = new MenuPrincipal();
             //MainPage = new Login();
             //MainPage = new Campanha03();
-            //MainPage = new Cadastro();
-            MainPage = new MenuCampanhas();
+            MainPage = new Cadastro();
+            //MainPage = new MenuCampanhas();
             //MainPage = new ConfirmacaoCodigo();
             //MainPage = new ConfirmacaoTelefone();
         }
