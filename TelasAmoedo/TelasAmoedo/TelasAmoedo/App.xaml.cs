@@ -22,6 +22,7 @@ namespace TelasAmoedo
             //MainPage = new Cadastro();
             MainPage = new MenuCampanhas();
             //MainPage = new ConfirmacaoCodigo();
+            //MainPage = new ConfirmacaoTelefone();
         }
 
         protected override void OnStart()
