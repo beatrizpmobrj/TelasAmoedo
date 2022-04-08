@@ -17,7 +17,8 @@ namespace TelasAmoedo
 
             //MainPage = new MainPage();
             //MainPage = new MenuPrincipal();
-            MainPage = new Campanha03();
+            //MainPage = new Login();
+            MainPage = new Cadastro();
         }
 
         protected override void OnStart()

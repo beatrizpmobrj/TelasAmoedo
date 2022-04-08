@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TelasAmoedo.Views.Cadastro">
+    <Shell.TitleView>
+        <ContentView>
+            <Image Source="fundo" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center" />
+        </ContentView>
+    </Shell.TitleView>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="30">
+            <Label Text="Nome" TextColor="DarkRed" FontSize="18" />
+            <Entry Placeholder="Rafael da Silva" FontSize="18" />
+            <Label Text="Email" TextColor="DarkRed" FontSize="18" />
+            <Entry Placeholder="rafael@amoedo.com.br" FontSize="18" />
+            <Label Text="CPF" TextColor="DarkRed" FontSize="18" />
+            <Entry Placeholder="000.000.000-00" FontSize="18" />
+            <Label Text="Data de nascimento" TextColor="DarkRed" FontSize="18" />
+            <DatePicker />
+            <Label Text="Sexo" TextColor="DarkRed" FontSize="18" />
+            <Picker />
+            <StackLayout Orientation="Horizontal">
+                <CheckBox />
+                <Button Text="Aceite de Política de Privacidade" BackgroundColor="Transparent" VerticalOptions="Center" />
+            </StackLayout>
+            <Button Text="Avançar" BackgroundColor="DarkRed" TextColor="White" CornerRadius="7" WidthRequest="250" HeightRequest="40" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
