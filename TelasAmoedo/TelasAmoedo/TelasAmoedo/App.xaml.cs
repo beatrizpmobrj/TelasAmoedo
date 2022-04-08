@@ -19,7 +19,8 @@ namespace TelasAmoedo
             //MainPage = new MenuPrincipal();
             //MainPage = new Login();
             //MainPage = new Cadastro();
-            MainPage = new ConfirmacaoNumero();
+            //MainPage = new ConfirmacaoNumero();
+            MainPage = new ConfirmacaoCodigo();
         }
 
         protected override void OnStart()
