@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TelasAmoedo.Views.MenuCampanhas">
 
-    <Grid RowDefinitions="*,60,40,450" ColumnDefinitions="*,*" BackgroundColor="#800">
+    <Grid RowDefinitions="*,*,30,500" ColumnDefinitions="*,*" BackgroundColor="#800">
         <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Aspect="AspectFill" 
                Opacity="0.2" Source="fundo.png"/>
         <Label Text="Amoedo" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" 
@@ -22,7 +22,7 @@
         </FlexLayout>
 
         <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Vertical"
-                     HorizontalOptions="Center" VerticalOptions="Start">
+                     HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="CAMPANHAS" FontFamily="Pontos" FontAttributes="Bold" FontSize="28"
                    HorizontalTextAlignment="Start" VerticalTextAlignment="Start" VerticalOptions="Start"
                    TextColor="White" Grid.Row="1"/>
@@ -42,16 +42,16 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <FlexLayout Grid.Column="0" Grid.ColumnSpan="2" Direction="Row">
-                        <Grid ColumnDefinitions="180,130,50" RowDefinitions="*" Padding="10">
+                        <Grid ColumnDefinitions="180,130,50" RowDefinitions="*" Padding="10" ColumnSpacing="0">
                       
                         <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="White"
-                               CornerRadius="10">
+                               CornerRadius="2.5">
                             <Label Text="{Binding Nome}" FontFamily="Pontos" TextColor="#800" FontSize="20"/>
                         </Frame>
-                        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" CornerRadius="10">
+                        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" CornerRadius="0">
                             <Label Text="{Binding DataFormatada}" FontSize="15" FontFamily="Pontos" TextColor="#800"/>
                         </Frame>
-                        <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="White" CornerRadius="10">
+                        <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="White" CornerRadius="2.5">
                             <Image Source="{Binding Icone}"/>
                         </Frame>
                        
