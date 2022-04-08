@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TelasAmoedo.Views.ConfirmacaoCodigo">
+    <ContentPage.Content>
+        <StackLayout Padding="10" >
+            <Grid Padding="5,0,5,10" ColumnDefinitions="*" RowDefinitions="80,*,70,50" >
+                <StackLayout Padding="20,0,20,20" Grid.Row="1">
+                    <Label Text="Insira seu telefone" FontSize="20" HorizontalOptions="Center" />
+                    <Label Text="Insira o código de confirmação de 6 dígitos que enviamos para seu número que termina em 0000 e conclua o seu cadastro" 
+                           FontSize="14" HorizontalOptions="Center" />
+                </StackLayout>
+                <Grid Grid.Row="2" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*">
+                    <Entry Grid.Column="0" Keyboard="Numeric" />
+                    <Entry Grid.Column="1" Keyboard="Numeric" />
+                    <Entry Grid.Column="2" Keyboard="Numeric" />
+                    <Entry Grid.Column="4" Keyboard="Numeric" />
+                    <Entry Grid.Column="5" Keyboard="Numeric" />
+                    <Entry Grid.Column="6" Keyboard="Numeric" />
+                </Grid>
+            </Grid>
+            <StackLayout >
+                <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+                <Button Margin="0,20,0,0" Text="Avançar" BackgroundColor="DarkRed" TextColor="White" CornerRadius="7" WidthRequest="250" HeightRequest="40" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Enviar código de confirmação novamente - ALterar número de telefone" TextColor="DarkRed" FontSize="10" WidthRequest="360" BackgroundColor="Transparent" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
