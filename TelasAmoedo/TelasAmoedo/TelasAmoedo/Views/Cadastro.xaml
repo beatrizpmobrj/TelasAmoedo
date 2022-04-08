@@ -16,7 +16,7 @@
             <Label Text="Email" TextColor="DarkRed" FontSize="18" />
             <Entry Placeholder="rafael@amoedo.com.br" FontSize="18" />
             <Label Text="CPF" TextColor="DarkRed" FontSize="18" />
-            <Entry FontSize="18">
+            <Entry FontSize="18" Keyboard="Numeric">
                 <Entry.Behaviors>
                     <xct:MaskedBehavior 
                             Mask="000.000.000-00" 

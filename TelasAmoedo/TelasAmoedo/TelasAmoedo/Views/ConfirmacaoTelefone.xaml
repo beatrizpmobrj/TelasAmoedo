@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="TelasAmoedo.Views.ConfirmacaoTelefone">
     
     <ContentPage.Content>
@@ -11,7 +12,13 @@
                     <Label Text="Enviaremos um código de login por SMS para esse número que você cadastrar." FontSize="14" HorizontalOptions="Center" />
                 </StackLayout>
                 <Image Grid.Row="2" Source="shield" />
-                <Entry Grid.Row="3" Placeholder="(00) 00000-0000" BackgroundColor="LightGray" Keyboard="Numeric" />
+                <Entry Grid.Row="3" Placeholder="(00) 00000-0000" BackgroundColor="LightGray" Keyboard="Numeric">
+                    <Entry.Behaviors>
+                        <xct:MaskedBehavior 
+                            Mask="(00) 00000-0000" 
+                            UnMaskedCharacter="0"/>
+                    </Entry.Behaviors>
+                </Entry>
             </Grid>
             <StackLayout >
                 <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
