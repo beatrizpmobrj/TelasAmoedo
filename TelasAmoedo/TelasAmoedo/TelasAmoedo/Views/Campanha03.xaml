@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TelasAmoedo.Views.Campanha03">
+
+    <Grid RowDefinitions="100,650" ColumnDefinitions="*,*" BackgroundColor="#800">
+        <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Aspect="AspectFill" 
+               Opacity="0.2" Source="fundo.png"/>
+        <Label Text="Amoedo" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" 
+               FontFamily="Amoedo" FontSize="50" HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Start" Opacity="100" TextColor="White"/>
+        <FlexLayout Grid.Row="0" Direction="0" AlignItems="Start" Padding="10,20">
+            <Frame HeightRequest="60" WidthRequest="110"
+               Padding="-3" CornerRadius="60" IsClippedToBounds="True">
+                <Image Source="perfil.png"/>
+            </Frame>
+            <StackLayout Spacing="0" Padding="10,-2,-20,-10">
+                <Label Text="Olá, Beatriz" FontFamily="Others" FontAttributes="Bold" FontSize="20" 
+                   TextColor="White"/>
+                <Label Text="Seu último acesso foi em 06/09/2021" FontFamily="Others" TextColor="White"/>
+            </StackLayout>
+        </FlexLayout>
+        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="18,0" VerticalOptions="FillAndExpand"
+               HasShadow="True" CornerRadius="30" BackgroundColor="White">
+            <Grid RowDefinitions="*,150,*,*,*">
+                <Label Text="CAMPANHA 03" FontFamily="Pontos" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   TextColor="#800" FontSize="26" Grid.Row="0" />
+
+                <Image Source="campanha03.png" Grid.Row="1"  HorizontalOptions="Center"
+                       WidthRequest="300" HeightRequest="300"/>
+
+                <StackLayout Grid.Row="2" Padding="0,20">
+                    <Label HorizontalOptions="Start" Grid.Row="2" Padding="10,10,-15,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Nome" FontFamily="Others" TextColor="#800" FontSize="18" 
+                                  FontAttributes="Bold"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label HorizontalOptions="Start" Padding="10,0,-15,0" FontSize="17" Grid.Row="2" Text="Campanha de Natal" FontFamily="Others"/>
+                </StackLayout>
+                <StackLayout Grid.Row="3" Padding="0,-5,-10,0">
+                    <Label HorizontalOptions="Start" Grid.Row="2" Padding="10,10,-15,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Período" FontFamily="Others" TextColor="#800" FontSize="18" 
+                                  FontAttributes="Bold"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label HorizontalOptions="Start" Padding="10,0,-15,0" Grid.Row="2" Text="18/12/2021 - 20/11/2022" FontSize="16" FontFamily="Others"/>
+                </StackLayout>
+                <StackLayout Grid.Row="4" Padding="30,5">
+                    <Button Text="Resgatar" BackgroundColor="#800" FontFamily="Pontos" FontSize="15" TextColor="White" Grid.Row="4" HeightRequest="50" WidthRequest="40" CornerRadius="7"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </Grid>
+
+</ContentPage>
