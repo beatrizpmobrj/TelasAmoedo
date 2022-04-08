@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="TelasAmoedo.Views.Cadastro">
     <Shell.TitleView>
         <ContentView>
@@ -15,7 +16,13 @@
             <Label Text="Email" TextColor="DarkRed" FontSize="18" />
             <Entry Placeholder="rafael@amoedo.com.br" FontSize="18" />
             <Label Text="CPF" TextColor="DarkRed" FontSize="18" />
-            <Entry Placeholder="000.000.000-00" FontSize="18" />
+            <Entry FontSize="18">
+                <Entry.Behaviors>
+                    <xct:MaskedBehavior 
+                            Mask="000.000.000-00" 
+                            UnMaskedCharacter="0" />
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Data de nascimento" TextColor="DarkRed" FontSize="18" />
             <DatePicker />
             <Label Text="Sexo" TextColor="DarkRed" FontSize="18" />
