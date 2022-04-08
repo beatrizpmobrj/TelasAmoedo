@@ -45,13 +45,13 @@
                         <Grid ColumnDefinitions="180,130,50" RowDefinitions="*" Padding="10" ColumnSpacing="0">
                       
                         <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="White"
-                               CornerRadius="2.5">
+                               CornerRadius="0">
                             <Label Text="{Binding Nome}" FontFamily="Pontos" TextColor="#800" FontSize="20"/>
                         </Frame>
                         <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" CornerRadius="0">
                             <Label Text="{Binding DataFormatada}" FontSize="15" FontFamily="Pontos" TextColor="#800"/>
                         </Frame>
-                        <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="White" CornerRadius="2.5">
+                        <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="White" CornerRadius="0">
                             <Image Source="{Binding Icone}"/>
                         </Frame>
                        
