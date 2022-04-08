@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TelasAmoedo.Views.MenuCampanhas">
 
-    <Grid RowDefinitions="*,*,*,*,Auto" ColumnDefinitions="*,*" BackgroundColor="#800">
+    <Grid RowDefinitions="*,*,300" ColumnDefinitions="*,*" BackgroundColor="#800">
         <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Aspect="AspectFill" 
                Opacity="0.2" Source="fundo.png"/>
         <Label Text="Amoedo" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" 
@@ -23,12 +23,19 @@
 
         <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal"
                      HorizontalOptions="CenterAndExpand">
-
             <Label Text="CAMPANHAS" FontFamily="Pontos" FontAttributes="Bold" FontSize="28"
                    HorizontalTextAlignment="Start" VerticalTextAlignment="Start" VerticalOptions="Start"
-                   TextColor="White" Grid.Row="1" TextDecorations="Underline"
-                   />
+                   TextColor="White" Grid.Row="1"/>
         </StackLayout>
+        <FlexLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"  AlignItems="Center" Direction="Column">
+            <Grid ColumnDefinitions="180,100,50">
+                <Label Text="Nome" Grid.Column="0" HorizontalTextAlignment="Start" FontFamily="Others" FontAttributes="Bold"
+                       FontSize="18" TextColor="White"/>
+                <Label Text="Período" Grid.Column="1" HorizontalOptions="Start" FontFamily="Others" FontAttributes="Bold"
+                       FontSize="18" TextColor="White"/>
+                <Image Source="mcampanhas.png" Grid.Column="2" HorizontalOptions="End" BackgroundColor="White"/>
+            </Grid>
+        </FlexLayout>
 
 
     </Grid>
