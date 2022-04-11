@@ -6,23 +6,27 @@
     
     <ContentPage.Content>
         <StackLayout Padding="10" >
-            <Grid Padding="5,0,5,10" ColumnDefinitions="*" RowDefinitions="80,*,70,50" >
+            <Grid Padding="5,0,5,10" ColumnDefinitions="*" RowDefinitions="80,*,120,*" >
                 <StackLayout Padding="20,0,20,20" Grid.Row="1">
                     <Label Text="Insira seu telefone" FontSize="20" HorizontalOptions="Center" />
                     <Label Text="Enviaremos um código de login por SMS para esse número que você cadastrar." FontSize="14" HorizontalOptions="Center" />
                 </StackLayout>
                 <Image Grid.Row="2" Source="shield" />
-                <Entry Grid.Row="3" Placeholder="(00) 00000-0000" BackgroundColor="LightGray" Keyboard="Numeric">
-                    <Entry.Behaviors>
-                        <xct:MaskedBehavior 
+                <StackLayout Grid.Row="3" >
+                    <Frame HeightRequest="40" Padding="15,8,0,5" Margin="0,20,0,0" BackgroundColor="LightGray" CornerRadius="10">
+                        <Entry Placeholder="(00) 00000-0000" Margin="0" BackgroundColor="LightGray" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:MaskedBehavior 
                             Mask="(00) 00000-0000" 
                             UnMaskedCharacter="0"/>
-                    </Entry.Behaviors>
-                </Entry>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Frame>
+                </StackLayout>
             </Grid>
             <StackLayout >
                 <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
-                <Button Margin="0,20,0,0" Text="Avançar" BackgroundColor="DarkRed" TextColor="White" CornerRadius="7" WidthRequest="250" HeightRequest="40" />
+                <Button Margin="0,20,0,0" Text="Avançar" BackgroundColor="DarkRed" TextColor="White" CornerRadius="7" WidthRequest="250" HeightRequest="50" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
