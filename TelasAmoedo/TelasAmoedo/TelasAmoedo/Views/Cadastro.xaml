@@ -10,26 +10,37 @@
     </Shell.TitleView>
     
     <ContentPage.Content>
-        <StackLayout Padding="30">
+        <StackLayout Padding="30" >
             <Label Text="Nome" TextColor="DarkRed" FontSize="18" />
-            <Entry Placeholder="Rafael da Silva" FontSize="18" />
+            <Entry Placeholder="ex: Rafael da Silva" FontSize="18" />
+            <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
             <Label Text="Email" TextColor="DarkRed" FontSize="18" />
-            <Entry Placeholder="rafael@amoedo.com.br" FontSize="18" />
+            <Entry Placeholder="ex: rafael@amoedo.com.br" FontSize="18" />
+            <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
             <Label Text="CPF" TextColor="DarkRed" FontSize="18" />
-            <Entry FontSize="18" Keyboard="Numeric">
+            <Entry Placeholder="ex: 000.000.000-00" FontSize="18" Keyboard="Numeric">
                 <Entry.Behaviors>
                     <xct:MaskedBehavior 
                             Mask="000.000.000-00" 
                             UnMaskedCharacter="0" />
                 </Entry.Behaviors>
             </Entry>
+            <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
             <Label Text="Data de nascimento" TextColor="DarkRed" FontSize="18" />
             <DatePicker />
+            <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
             <Label Text="Sexo" TextColor="DarkRed" FontSize="18" />
-            <Picker />
+            <Picker Title="Escolha" BackgroundColor="LightGray" xct:CornerRadiusEffect.CornerRadius="10" HeightRequest="45">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Feminino</x:String>
+                        <x:String>Masculino</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
             <StackLayout Orientation="Horizontal">
                 <CheckBox />
-                <Button Text="Aceite de Política de Privacidade" BackgroundColor="Transparent" VerticalOptions="Center" />
+                <Button Margin="-15,0,0,0" Text="Aceite de Política de Privacidade" BackgroundColor="Transparent" VerticalOptions="Center" />
             </StackLayout>
             <Button Text="Avançar" BackgroundColor="DarkRed" TextColor="White" CornerRadius="7" WidthRequest="250" HeightRequest="40" />
         </StackLayout>
