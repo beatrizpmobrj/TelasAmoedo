@@ -23,8 +23,8 @@
         <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="18,0" VerticalOptions="FillAndExpand"
                HasShadow="True" CornerRadius="20" BackgroundColor="White">
             <Grid RowDefinitions="*,*,*,*,200">
-                <Label Text="RESGATE" FontFamily="Pontos" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                   TextColor="#800" FontSize="26" Grid.Row="0" />
+                <Label Text="RESGATE" FontFamily="Pontos" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"
+                   TextColor="#800" FontSize="26" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                 <StackLayout Grid.Row="1" Padding="0,20">
                     <Label HorizontalOptions="Start" Grid.Row="1" Padding="10,10,-15,0">
                         <Label.FormattedText>
@@ -48,7 +48,7 @@
                     <Label HorizontalOptions="Start" Padding="10,0,-15,0" Grid.Row="2" Text="123" FontSize="16" FontFamily="Others"/>
                 </StackLayout>
                 <StackLayout Grid.Row="3" Padding="0,-5,-10,0">
-                    <Label HorizontalOptions="Start" Grid.Row="2" Padding="10,10,-15,0">
+                    <Label HorizontalOptions="Start" Grid.Row="3" Padding="10,10,-15,0">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Valor disponível" FontFamily="Others" TextColor="#800" FontSize="18" 
@@ -56,11 +56,14 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label HorizontalOptions="Start" Padding="10,0,-15,0" Grid.Row="2" Text="R$ 250,00" FontSize="16" FontFamily="Others"/>
+                    <Label HorizontalOptions="Start" Padding="10,0,-15,0" Grid.Row="3" Text="R$ 250,00" FontSize="16" FontFamily="Others"/>
                 </StackLayout>
-                <StackLayout Grid.Row="4" Padding="30,5">
-                    <Button Text="Resgatar" BackgroundColor="#800" FontFamily="Pontos" FontSize="15" TextColor="White" Grid.Row="4" HeightRequest="50" WidthRequest="40" CornerRadius="7"/>
-                </StackLayout>
+                <Frame Grid.Row="4" BackgroundColor="Gray" Grid.Column="0" Grid.ColumnSpan="2" Margin="18,0" VerticalOptions="FillAndExpand"
+               HasShadow="True" CornerRadius="20">
+                    <StackLayout Grid.Row="4" Padding="30,5">
+                        <Button Text="Resgatar" BackgroundColor="#800" FontFamily="Pontos" FontSize="15" TextColor="White" Grid.Row="4" HeightRequest="50" WidthRequest="40" CornerRadius="7"/>
+                    </StackLayout>
+                </Frame>
             </Grid>
         </Frame>
     </Grid>
