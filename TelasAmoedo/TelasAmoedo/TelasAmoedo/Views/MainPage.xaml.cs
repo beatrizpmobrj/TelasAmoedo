@@ -14,8 +14,6 @@ namespace TelasAmoedo
         public MainPage()
         {
             InitializeComponent();
-
-            //Routing.RegisterRoute("cadastropage", typeof(Cadastro));
         }
     }
 }
