@@ -22,12 +22,10 @@
         </FlexLayout>
         <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="18,0" VerticalOptions="FillAndExpand"
                HasShadow="True" CornerRadius="20" BackgroundColor="White">
-            <Grid RowDefinitions="*,150,*,*,*">
-                <Label Text="CAMPANHA 03" FontFamily="Pontos" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+            <Grid RowDefinitions="*,*,*,*,200">
+                <Label Text="RESGATE" FontFamily="Pontos" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    TextColor="#800" FontSize="26" Grid.Row="0" />
 
-                <Image Source="campanha03.png" Grid.Row="1"  HorizontalOptions="Center"
-                       WidthRequest="300" HeightRequest="300"/>
 
                 <StackLayout Grid.Row="2" Padding="0,20">
                     <Label HorizontalOptions="Start" Grid.Row="2" Padding="10,10,-15,0">
