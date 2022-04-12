@@ -60,10 +60,51 @@
                 </StackLayout>
                 <Frame Grid.Row="4" BackgroundColor="LightGray" Grid.Column="0" Grid.ColumnSpan="2" Margin="-5,0" VerticalOptions="FillAndExpand" 
                HasShadow="True" CornerRadius="5">
-                    <Grid RowDefinitions="*,*,*,*,*,*,*">
-                        <StackLayout Grid.Row="6" Padding="30,-10" Orientation="Vertical">
+                    <Grid RowDefinitions="*,*,*,*,*,*">
+
+                        <StackLayout Grid.Row="0" Padding="0,-15">
+                            <Label HorizontalOptions="Start" Grid.Row="0" Padding="10,10,-15,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Valor a ser resgatado" FontFamily="Others" TextColor="#800" FontSize="18" 
+                                  FontAttributes="Bold"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label HorizontalOptions="Start" Padding="10,-5,-15,0" Grid.Row="0" Text="Digite o valor" FontSize="13" FontFamily="Others"/>
+                        </StackLayout>
+                        <Entry Placeholder="" FontSize="12" Grid.Row="0" Keyboard="Default"/>
+
+                        <StackLayout Grid.Row="1" Padding="0,-15">
+                            <Label HorizontalOptions="Start" Grid.Row="2" Padding="10,10,-15,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Pontos utilizados" FontFamily="Others" TextColor="#800" FontSize="18" 
+                                  FontAttributes="Bold"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label HorizontalOptions="Start" Padding="10,-5,-15,0" Grid.Row="1" Text="Digite o valor" FontSize="13" FontFamily="Others"/>
+                        </StackLayout>
+                        <Entry Placeholder="" FontSize="12" Grid.Row="1"/>
+
+                        <StackLayout Grid.Row="2" Padding="0,-15">
+                            <Label HorizontalOptions="Start" Grid.Row="1" Padding="10,10,-15,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Pontos utilizados" FontFamily="Others" TextColor="#800" FontSize="18" 
+                                  FontAttributes="Bold"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label HorizontalOptions="Start" Padding="10,-5,-15,0" Grid.Row="1" Text="Digite o valor" FontSize="13" FontFamily="Others"/>
+                        </StackLayout>
+                        <Entry Placeholder="" FontSize="12" Grid.Row="2"/>
+
+
+                        <StackLayout Grid.Row="5" Padding="30,-10" Orientation="Vertical">
                             <Button Text="EMITIR VOUCHER"  BackgroundColor="#800" FontFamily="Pontos" FontSize="15" TextColor="White" Grid.Row="6" HeightRequest="50" WidthRequest="40" CornerRadius="7"
-                                    VerticalOptions="Start"/>
+                                    VerticalOptions="End"/>
                         </StackLayout>
                     </Grid>
                 </Frame>
