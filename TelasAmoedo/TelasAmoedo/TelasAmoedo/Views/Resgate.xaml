@@ -58,7 +58,7 @@
                     </Label>
                     <Label HorizontalOptions="Start" Padding="10,0,-15,0" Grid.Row="3" Text="R$ 250,00" FontSize="16" FontFamily="Others"/>
                 </StackLayout>
-                <Frame Grid.Row="4" BackgroundColor="LightGray" Grid.Column="0" Grid.ColumnSpan="2" Margin="-5,0" VerticalOptions="FillAndExpand" 
+                <Frame Grid.Row="4" BackgroundColor="NavajoWhite" Grid.Column="0" Grid.ColumnSpan="2" Margin="-5,0" VerticalOptions="FillAndExpand"
                HasShadow="True" CornerRadius="5">
                     <Grid RowDefinitions="*,*,*,*,*,*,*">
 
@@ -108,14 +108,12 @@
                         <StackLayout Grid.Row="5" Padding="0,-15">
                             <Entry Placeholder="" FontSize="12" Grid.Row="5"/>
                         </StackLayout>
-                   
+
 
                         <StackLayout Grid.Row="6" Padding="30,-10" Orientation="Vertical">
                             <Button Text="EMITIR VOUCHER"  BackgroundColor="#800" FontFamily="Pontos" FontSize="15" TextColor="White" Grid.Row="6" HeightRequest="50" WidthRequest="40" CornerRadius="7"
                                     VerticalOptions="End"/>
                         </StackLayout>
-                        
-                        
                     </Grid>
                 </Frame>
             </Grid>
