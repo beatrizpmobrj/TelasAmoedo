@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
              x:Class="TelasAmoedo.Views.Login">
+
+    <ContentPage.BindingContext>
+        <viewModels:LoginViewModel />
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <ScrollView>
             <Grid ColumnDefinitions="1*" RowDefinitions="1*, 500, 1*">
@@ -31,7 +37,7 @@
                     </StackLayout>
                     <StackLayout VerticalOptions="End" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center" >
                         <ImageButton Margin="0,0,10,0" Source="facialwhite" WidthRequest="53" BackgroundColor="Transparent" />
-                        <ImageButton Source="fingerprintwhite" WidthRequest="70" BackgroundColor="Transparent" />
+                        <ImageButton Source="fingerprintwhite" Command="{Binding LeitorBiometricoCommand}" WidthRequest="70" BackgroundColor="Transparent" />
                     </StackLayout>
                     <StackLayout Padding="0" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
                         <Label Text="Ainda não tem conta" TextColor="LightGray" VerticalOptions="Center" />
