@@ -6,10 +6,11 @@ using Plugin.Fingerprint.Abstractions;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
+using TelasAmoedo.Views;
 
 namespace TelasAmoedo.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : ContentPage, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -40,21 +41,29 @@ namespace TelasAmoedo.ViewModels
         public ICommand LeitorBiometricoCommand { get; set; }
         public ICommand MostrarLoginCommand { get; set; }
         public ICommand LoginCommand { get; set; }
+        public ICommand CadastroCommand { get; set; }
 
         public LoginViewModel()
         {
-            LeitorBiometricoCommand = new Command(IsDigitalValidada);
-            MostrarLoginCommand = new Command(MostrarLogin);
-            LoginCommand = new Command(Login);
+            LeitorBiometricoCommand = new Command(IsDigitalValidadaAsync);
+            MostrarLoginCommand = new Command(MostrarLoginAsync);
+            LoginCommand = new Command(LoginAsync);
+            CadastroCommand = new Command(CadastroAsync);
         }
-        private async void Login()
+
+        private async void CadastroAsync()
+        {
+            await Shell.Current.GoToAsync("cadastropage");
+        }
+
+        private async void LoginAsync()
         {
             await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
             await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
             await App.Current.MainPage.DisplayAlert("Pronto!", "Login salvo com sucesso!", "OK");
         }
 
-        private async void IsDigitalValidada()
+        private async void IsDigitalValidadaAsync()
         {
             var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
@@ -72,7 +81,7 @@ namespace TelasAmoedo.ViewModels
                 await App.Current.MainPage.DisplayAlert("Pronto!", "Acesso liberado!", "OK");
             }
         }
-        private async void MostrarLogin()
+        private async void MostrarLoginAsync()
         {
             try
             {

@@ -17,12 +17,16 @@ namespace TelasAmoedo
 
             //MainPage = new MainPage();
             //MainPage = new MenuPrincipal();
-            MainPage = new Login();
+            //MainPage = new Login();
             //MainPage = new Campanha03();
             //MainPage = new Cadastro();
             //MainPage = new MenuCampanhas();
             //MainPage = new ConfirmacaoCodigo();
             //MainPage = new ConfirmacaoTelefone();
+            MainPage = new AppShell();
+
+            Routing.RegisterRoute("cadastropage", typeof(Cadastro));
+            Routing.RegisterRoute("Mainpage", typeof(MainPage));
         }
 
         protected override void OnStart()

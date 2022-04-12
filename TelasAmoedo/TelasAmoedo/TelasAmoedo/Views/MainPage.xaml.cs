@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TelasAmoedo.Views;
 using Xamarin.Forms;
 
 namespace TelasAmoedo
@@ -13,6 +14,8 @@ namespace TelasAmoedo
         public MainPage()
         {
             InitializeComponent();
+
+            //Routing.RegisterRoute("cadastropage", typeof(Cadastro));
         }
     }
 }

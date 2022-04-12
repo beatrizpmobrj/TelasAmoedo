@@ -4,6 +4,10 @@
              xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
              x:Class="TelasAmoedo.Views.Login">
 
+    <!-- <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Teste" />
+    </ContentPage.ToolbarItems> -->
+
     <ContentPage.BindingContext>
         <viewModels:LoginViewModel />
     </ContentPage.BindingContext>
@@ -41,7 +45,7 @@
                     </StackLayout>
                     <StackLayout Padding="0" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
                         <Label Text="Ainda não tem conta" TextColor="LightGray" VerticalOptions="Center" />
-                        <Button Text="Cadastre-se" TextColor="Red" BackgroundColor="White" FontAttributes="Bold" FontSize="12" CornerRadius="10" HeightRequest="40" />
+                        <Button Text="Cadastre-se" Command="{Binding CadastroCommand}" TextColor="Red" BackgroundColor="White" FontAttributes="Bold" FontSize="12" CornerRadius="10" HeightRequest="40" />
                     </StackLayout>
                 </Grid>
             </Grid>
