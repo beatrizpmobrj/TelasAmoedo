@@ -5,16 +5,53 @@ using System.Threading.Tasks;
 using Plugin.Fingerprint.Abstractions;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.ComponentModel;
 
 namespace TelasAmoedo.ViewModels
 {
-    public class LoginViewModel : Shell
+    public class LoginViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _email;
+        public string Email { 
+            get 
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
+            }
+        }
+        private string _senha;
+        public string Senha { 
+            get
+            {
+                return _senha;
+            }
+            set
+            {
+                _senha = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Senha"));
+            }
+        }
         public ICommand LeitorBiometricoCommand { get; set; }
+        public ICommand MostrarLoginCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
 
         public LoginViewModel()
         {
             LeitorBiometricoCommand = new Command(IsDigitalValidada);
+            MostrarLoginCommand = new Command(MostrarLogin);
+            LoginCommand = new Command(Login);
+        }
+        private async void Login()
+        {
+            await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
+            await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
+            await App.Current.MainPage.DisplayAlert("Pronto!", "Login salvo com sucesso!", "OK");
         }
 
         private async void IsDigitalValidada()
@@ -23,7 +60,7 @@ namespace TelasAmoedo.ViewModels
 
             if(!availability)
             {
-                await DisplayAlert("Erro!", "Leitor biométrico não disponível.", "OK");
+                await App.Current.MainPage.DisplayAlert("Erro!", "Leitor biométrico não disponível.", "OK");
                 return;
             }
 
@@ -32,8 +69,21 @@ namespace TelasAmoedo.ViewModels
 
             if (authResult.Authenticated)
             {
-                await DisplayAlert("Pronto!", "Acesso liberado!", "OK");
+                await App.Current.MainPage.DisplayAlert("Pronto!", "Acesso liberado!", "OK");
             }
+        }
+        private async void MostrarLogin()
+        {
+            try
+            {
+                _email = await Xamarin.Essentials.SecureStorage.GetAsync("email");
+                _senha = await Xamarin.Essentials.SecureStorage.GetAsync("senha");
+            }
+            catch (Exception)
+            {
+                await App.Current.MainPage.DisplayAlert("Erro!", "Não encontrado!", "OK");
+            }
+            await App.Current.MainPage.DisplayAlert("Seu login é:", $"Email: {Email}\r\n Senha: {Senha}", "OK");
         }
     }
 }
