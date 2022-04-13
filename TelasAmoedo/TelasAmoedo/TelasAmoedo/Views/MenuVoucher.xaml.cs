@@ -12,6 +12,7 @@ namespace TelasAmoedo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuVoucher : ContentPage
     {
+
         public MenuVoucher()
         {
             BindingContext = new MenuVoucherViewModel();
