@@ -18,6 +18,9 @@
             <Label Text="Email" TextColor="DarkRed" FontSize="18" />
             <Entry Placeholder="ex: rafael@amoedo.com.br" FontSize="18" />
             <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+            <Label Text="Senha" TextColor="DarkRed" FontSize="18" />
+            <Entry Placeholder="ex: 123456" FontSize="18" />
+            <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
             <Label Text="CPF" TextColor="DarkRed" FontSize="18" />
             <Entry Placeholder="ex: 000.000.000-00" FontSize="18" Keyboard="Numeric">
                 <Entry.Behaviors>
