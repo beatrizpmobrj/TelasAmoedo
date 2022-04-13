@@ -46,24 +46,24 @@ namespace TelasAmoedo.ViewModels
 
         public LoginViewModel()
         {
-            LeitorBiometricoCommand = new Command(IsDigitalValidadaAsync);
-            MostrarLoginCommand = new Command(MostrarLoginAsync);
-            LoginCommand = new Command(LoginAsync);
-            CadastroCommand = new Command(CadastroAsync);
-            SalvarLoginCommand = new Command(SalvarEMostarLogin); // Icone do Face Id, apenas para teste
+            LeitorBiometricoCommand = new Command(async () => await IsDigitalValidadaAsync());
+            MostrarLoginCommand = new Command(async () => await MostrarLoginAsync());
+            LoginCommand = new Command(async () => await LoginAsync());
+            CadastroCommand = new Command(async () => await CadastroAsync());
+            SalvarLoginCommand = new Command(async () => await SalvarLogin()); // Icone do Face Id, apenas para teste
         }
 
-        private async void CadastroAsync()
+        private async Task CadastroAsync()
         {
             await Shell.Current.GoToAsync("cadastropage");
         }
 
-        private async void LoginAsync()
+        private async Task LoginAsync()
         {
             await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}"); // Rota absoluta, deve estar na pagina shell
         }
 
-        private async void IsDigitalValidadaAsync()
+        private async Task IsDigitalValidadaAsync()
         {
             var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
@@ -83,7 +83,7 @@ namespace TelasAmoedo.ViewModels
                 await Shell.Current.GoToAsync("confirmacaotelefonepage");
             }
         }
-        private async void MostrarLoginAsync()
+        private async Task MostrarLoginAsync()
         {
             try
             {
@@ -96,7 +96,7 @@ namespace TelasAmoedo.ViewModels
             }
             await App.Current.MainPage.DisplayAlert("Seu login é:", $"Email: {Email}\r\n Senha: {Senha}", "OK");
         }
-        private async void SalvarEMostarLogin()
+        private async Task SalvarLogin()
         {
             await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
             await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
