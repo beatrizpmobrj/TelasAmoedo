@@ -29,7 +29,6 @@ namespace TelasAmoedo
             //Routing.RegisterRoute("menuprincipalpage", typeof(MenuPrincipal));
             Routing.RegisterRoute("confirmacaotelefonepage", typeof(ConfirmacaoTelefone));
             Routing.RegisterRoute("confirmacaocodigopage", typeof(ConfirmacaoCodigo));
-            //Routing.RegisterRoute("loginpage", typeof(Login));
         }
 
         protected override void OnStart()

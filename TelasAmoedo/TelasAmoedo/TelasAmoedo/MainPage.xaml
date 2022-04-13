@@ -10,8 +10,6 @@
         <ShellContent ContentTemplate="{DataTemplate Views:Login}" />
     </ShellItem>
 
-
-
     <TabBar Route="MenuPrincipal">
         <Tab Icon="{OnPlatform Android=home}">
             <ShellContent>
@@ -42,6 +40,5 @@
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
-
     </TabBar>
 </Shell>

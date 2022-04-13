@@ -5,11 +5,6 @@
              xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
              Shell.FlyoutBehavior="Disabled"
              x:Class="TelasAmoedo.Views.Cadastro">
-    <Shell.TitleView>
-        <ContentView>
-            <Image Source="fundo" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Center" />
-        </ContentView>
-    </Shell.TitleView>
 
     <ContentPage.BindingContext>
         <viewModels:CadastroViewModel />

@@ -18,7 +18,6 @@ namespace TelasAmoedo.ViewModels
 
         private async Task AvancarAsync()
         {
-            //await Shell.Current.GoToAsync("loginpage");
             await Shell.Current.GoToAsync($"//{nameof(Login)}");
         }
     }
