@@ -60,7 +60,7 @@ namespace TelasAmoedo.ViewModels
 
         private async void LoginAsync()
         {
-            await Shell.Current.GoToAsync("mainpage");
+            await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}"); // Rota absoluta, deve estar na pagina shell
         }
 
         private async void IsDigitalValidadaAsync()

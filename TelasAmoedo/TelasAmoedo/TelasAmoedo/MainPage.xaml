@@ -10,32 +10,36 @@
         <ShellContent ContentTemplate="{DataTemplate Views:Login}" />
     </ShellItem>
 
+    <FlyoutItem Title="Principal">
+        <ShellContent ContentTemplate="{DataTemplate Views:MenuPrincipal}" />
+    </FlyoutItem>
+
     <TabBar>
-        <Tab Icon="{OnPlatform Android=home, UWP=Assets/home.png}">
+        <Tab Icon="{OnPlatform Android=home}">
+            <ShellContent Route="MenuPrincipal">
+                <Views:MenuPrincipal/>
+            </ShellContent>
+        </Tab>
+
+        <Tab Icon="{OnPlatform Android=user}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=user, UWP=Assets/user.png}">
+        <Tab Icon="{OnPlatform Android=carteira}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=carteira, UWP=Assets/carteira.png}">
+        <Tab Icon="{OnPlatform Android=notificacoes}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=notificacoes, UWP=Assets/notificacoes.png}">
-            <ShellContent>
-                <Views:MenuPrincipal/>
-            </ShellContent>
-        </Tab>
-
-        <Tab Icon="{OnPlatform Android=menuham, UWP=Assets/menuham.png}">
+        <Tab Icon="{OnPlatform Android=menuham}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>

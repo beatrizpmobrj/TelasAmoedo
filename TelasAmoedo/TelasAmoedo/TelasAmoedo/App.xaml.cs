@@ -26,7 +26,7 @@ namespace TelasAmoedo
             //MainPage = new AppShell();
 
             Routing.RegisterRoute("cadastropage", typeof(Cadastro));
-            Routing.RegisterRoute("mainpage", typeof(MainPage));
+            //Routing.RegisterRoute("menuprincipalpage", typeof(MenuPrincipal));
             Routing.RegisterRoute("confirmacaotelefonepage", typeof(ConfirmacaoTelefone));
         }
 
