@@ -4,7 +4,11 @@ using System.Text;
 
 namespace TelasAmoedo.Models
 {
-    internal class ItemsMenuVoucher
+    public class ItemsMenuVoucher
     {
+        public int Codigo { get; set; } 
+        public float Valor { get; set; }
+
+        public string icone { get; set; } = "flechamcamp.png";
     }
 }
