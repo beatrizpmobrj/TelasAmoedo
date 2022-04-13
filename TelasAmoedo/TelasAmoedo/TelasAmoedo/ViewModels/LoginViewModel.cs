@@ -60,7 +60,7 @@ namespace TelasAmoedo.ViewModels
 
         private async void LoginAsync()
         {
-            
+            await Shell.Current.GoToAsync("mainpage");
         }
 
         private async void IsDigitalValidadaAsync()

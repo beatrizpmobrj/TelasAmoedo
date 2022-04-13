@@ -6,7 +6,10 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
 
-   
+    <ShellItem Route="Login" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate Views:Login}" />
+    </ShellItem>
+
     <TabBar>
         <Tab Icon="{OnPlatform Android=home, UWP=Assets/home.png}">
             <ShellContent>
