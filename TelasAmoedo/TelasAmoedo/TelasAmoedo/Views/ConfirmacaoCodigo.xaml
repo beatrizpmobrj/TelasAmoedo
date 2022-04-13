@@ -1,22 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
              x:Class="TelasAmoedo.Views.ConfirmacaoCodigo">
+
+    <ContentPage.BindingContext>
+        <viewModels:ConfirmacaoCodigoViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout Padding="10" >
-            <Grid Padding="5,0,5,10" ColumnDefinitions="*" RowDefinitions="80,*,70,50" >
+            <StackLayout Padding="0,5" Orientation="Horizontal">
+                <ImageButton Source="back" Command="{Binding VoltarCommand}" HeightRequest="25" Padding="10,0,0,0" BackgroundColor="Transparent" />
+                <Label Text="Código de confirmação" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold" />
+            </StackLayout>
+            <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+            <Grid Padding="5,0,5,10" ColumnDefinitions="*" RowDefinitions="80,AUTO,70,50" >
                 <StackLayout Padding="20,0,20,20" Grid.Row="1">
                     <Label Text="Insira seu telefone" FontSize="20" HorizontalOptions="Center" />
                     <Label Text="Insira o código de confirmação de 6 dígitos que enviamos para seu número que termina em 0000 e conclua o seu cadastro" 
                            FontSize="14" HorizontalOptions="Center" />
                 </StackLayout>
-                <Grid Grid.Row="2" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*">
-                    <Entry Grid.Column="0" Keyboard="Numeric" />
-                    <Entry Grid.Column="1" Keyboard="Numeric" />
-                    <Entry Grid.Column="2" Keyboard="Numeric" />
-                    <Entry Grid.Column="4" Keyboard="Numeric" />
-                    <Entry Grid.Column="5" Keyboard="Numeric" />
-                    <Entry Grid.Column="6" Keyboard="Numeric" />
+                <Grid Grid.Row="2" Padding="20,0" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*">
+                    <StackLayout Grid.Column="0" VerticalOptions="End" Margin="20,0,0,-10">
+                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                        <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" VerticalOptions="End" Margin="20,0,0,-10">
+                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                        <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" VerticalOptions="End" Margin="20,0,0,-10">
+                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                        <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="4" VerticalOptions="End" Margin="20,0,0,-10">
+                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                        <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="5" VerticalOptions="End" Margin="20,0,0,-10">
+                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                        <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="6" VerticalOptions="End" Margin="20,0,0,-10">
+                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                        <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
+                    </StackLayout>
                 </Grid>
             </Grid>
             <StackLayout >

@@ -7,41 +7,39 @@
              BackgroundColor="Transparent"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
 
-   
-    <TabBar>
-        <Tab Icon="{OnPlatform Android=home, UWP=Assets/home.png}">
+    <ShellItem Route="Login" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate Views:Login}" />
+    </ShellItem>
 
+    <TabBar Route="MenuPrincipal">
+        <Tab Icon="{OnPlatform Android=home}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=user, UWP=Assets/user.png}">
+        <Tab Icon="{OnPlatform Android=user}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=wallet, UWP=Assets/wallet.png}">
+        <Tab Icon="{OnPlatform Android=carteira}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=notification, UWP=Assets/notification.png}">
+        <Tab Icon="{OnPlatform Android=notificacoes}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=menu, UWP=Assets/menu.png}">
+        <Tab Icon="{OnPlatform Android=menuham}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
-
     </TabBar>
-    
-    
-
 </Shell>
