@@ -10,13 +10,11 @@
         <ShellContent ContentTemplate="{DataTemplate Views:Login}" />
     </ShellItem>
 
-    <FlyoutItem Title="Principal">
-        <ShellContent ContentTemplate="{DataTemplate Views:MenuPrincipal}" />
-    </FlyoutItem>
 
-    <TabBar>
+
+    <TabBar Route="MenuPrincipal">
         <Tab Icon="{OnPlatform Android=home}">
-            <ShellContent Route="MenuPrincipal">
+            <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
