@@ -2,12 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
              x:Class="TelasAmoedo.Views.ConfirmacaoTelefone">
-    
+
+    <ContentPage.BindingContext>
+        <viewModels:ConfirmacaoTelefoneViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout Padding="10" >
             <StackLayout Padding="0,5" Orientation="Horizontal">
-                <ImageButton Source="back" HeightRequest="25" Padding="10,0,0,0" BackgroundColor="Transparent" />
+                <ImageButton Source="back" Command="{Binding VoltarCommand}" HeightRequest="25" Padding="10,0,0,0" BackgroundColor="Transparent" />
                 <Label Text="Código de confirmação" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold" />
             </StackLayout>
             <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
