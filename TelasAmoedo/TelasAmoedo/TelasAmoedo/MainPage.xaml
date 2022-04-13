@@ -4,11 +4,13 @@
              x:Class="TelasAmoedo.MainPage"
              xmlns:Views="clr-namespace:TelasAmoedo.Views"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="White">
+             BackgroundColor="Transparent"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
 
    
     <TabBar>
         <Tab Icon="{OnPlatform Android=home, UWP=Assets/home.png}">
+
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
@@ -20,19 +22,19 @@
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=carteira, UWP=Assets/carteira.png}">
+        <Tab Icon="{OnPlatform Android=wallet, UWP=Assets/wallet.png}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=notificacoes, UWP=Assets/notificacoes.png}">
+        <Tab Icon="{OnPlatform Android=notification, UWP=Assets/notification.png}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>
         </Tab>
 
-        <Tab Icon="{OnPlatform Android=menuham, UWP=Assets/menuham.png}">
+        <Tab Icon="{OnPlatform Android=menu, UWP=Assets/menu.png}">
             <ShellContent>
                 <Views:MenuPrincipal/>
             </ShellContent>

@@ -15,7 +15,7 @@ namespace TelasAmoedo
         {
             InitializeComponent();
 
-            //MainPage = new MainPage();
+            MainPage = new MainPage();
             //MainPage = new MenuPrincipal();
             //MainPage = new Login();
             //MainPage = new Campanha03();
@@ -23,7 +23,7 @@ namespace TelasAmoedo
             //MainPage = new MenuCampanhas();
             //MainPage = new ConfirmacaoCodigo();
             //MainPage = new ConfirmacaoTelefone();
-            MainPage = new Resgate();
+            //MainPage = new Resgate();
         }
 
         protected override void OnStart()
