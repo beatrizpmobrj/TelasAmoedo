@@ -55,7 +55,7 @@
                 <Button Text="Extrato" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" Grid.Row="0" HeightRequest="43" WidthRequest="350" CornerRadius="7" Margin="5"/>
                 <Button Text="Resgate" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" Grid.Row="1" HeightRequest="43" WidthRequest="350" CornerRadius="7" Margin="5"/>
                 <Button Text="Voucher" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" Grid.Row="2" HeightRequest="43" WidthRequest="350" CornerRadius="7" Margin="5"/>
-                <Button Text="Campanhas" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" Grid.Row="3" HeightRequest="43" WidthRequest="350" CornerRadius="7" Margin="5"/>
+                <Button Text="Campanhas" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" Grid.Row="3" HeightRequest="43" WidthRequest="350" CornerRadius="7" Margin="5" Command="{Binding AvancarCampanhas}"/>
                 <Button Text="Regulamento" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" Grid.Row="4" HeightRequest="43" WidthRequest="350" CornerRadius="7" Margin="5"/>
             </Grid>
         </StackLayout>
