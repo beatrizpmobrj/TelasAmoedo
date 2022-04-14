@@ -30,7 +30,7 @@
 
         <Tab Icon="{OnPlatform Android=notification, UWP=Assets/notification.png}">
             <ShellContent>
-                <Views:MenuPrincipal/>
+                <Views:Resgate/>
             </ShellContent>
         </Tab>
 
