@@ -15,8 +15,9 @@ namespace TelasAmoedo.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _email;
-        public string Email { 
-            get 
+        public string Email
+        {
+            get
             {
                 return _email;
             }
@@ -27,7 +28,8 @@ namespace TelasAmoedo.ViewModels
             }
         }
         private string _senha;
-        public string Senha { 
+        public string Senha
+        {
             get
             {
                 return _senha;
@@ -60,7 +62,10 @@ namespace TelasAmoedo.ViewModels
 
         private async Task LoginAsync()
         {
-            await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}"); // Rota absoluta, deve estar na pagina shell
+            Email = "email@mobrj.br";
+            Senha = "123456";
+
+            await ValidarLogin(Email, Senha);
         }
 
         private async Task IsDigitalValidadaAsync()
@@ -103,6 +108,29 @@ namespace TelasAmoedo.ViewModels
             await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
             await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
             await App.Current.MainPage.DisplayAlert("Pronto!", "Login salvo com sucesso!", "OK");
+        }
+        public async Task ValidarLogin(string email, string senha)
+        {
+            string emailValido = "email@mobrj.br";
+            string senhaValida = "123456";
+
+            if (emailValido == email & senhaValida == senha)
+            {
+                var answer = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria?", "Sim", "Não");
+                if (answer)
+                {
+                    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+                        new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+
+                    if (authResult.Authenticated)
+                    {
+                        await SalvarLogin();
+                        await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+                    }
+                }
+                else
+                    await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+            }
         }
     }
 }
