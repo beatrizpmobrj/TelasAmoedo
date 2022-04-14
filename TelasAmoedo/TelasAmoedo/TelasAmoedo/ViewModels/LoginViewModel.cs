@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
 using TelasAmoedo.Views;
+using Xamarin.Essentials;
 
 namespace TelasAmoedo.ViewModels
 {
@@ -119,6 +120,13 @@ namespace TelasAmoedo.ViewModels
                 var answer = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria?", "Sim", "Não");
                 if (answer)
                 {
+                    var availability = await CrossFingerprint.Current.IsAvailableAsync();
+
+                    if (!availability)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Erro!", "Leitor biométrico não disponível.", "OK");
+                        return;
+                    }
                     var authResult = await CrossFingerprint.Current.AuthenticateAsync(
                         new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
 
