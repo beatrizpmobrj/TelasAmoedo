@@ -63,14 +63,22 @@ namespace TelasAmoedo.ViewModels
 
         private async Task LoginAsync()
         {
-            Email = "email@mobrj.br";
-            Senha = "123456";
+            //Email = "email@mobrj.br";
+            //Senha = "123456";
 
             await ValidarLogin(Email, Senha);
         }
 
         private async Task IsDigitalValidadaAsync()
         {
+            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+
+            if(status != PermissionStatus.Granted)
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+
+            if (status != PermissionStatus.Granted)
+                return;
+
             var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
             var authenticationType = await CrossFingerprint.Current.GetAuthenticationTypeAsync();
@@ -108,7 +116,7 @@ namespace TelasAmoedo.ViewModels
         {
             await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
             await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
-            await App.Current.MainPage.DisplayAlert("Pronto!", "Login salvo com sucesso!", "OK");
+            //await App.Current.MainPage.DisplayAlert("Pronto!", "Login salvo com sucesso!", "OK");
         }
         public async Task ValidarLogin(string email, string senha)
         {
@@ -138,7 +146,9 @@ namespace TelasAmoedo.ViewModels
                 }
                 else
                     await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
-            }
+            } else
+                await App.Current.MainPage.DisplayAlert("Atençao!", "Email e/ou senha inválidos", "OK");
+
         }
     }
 }
