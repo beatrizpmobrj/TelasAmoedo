@@ -67,7 +67,9 @@ namespace TelasAmoedo.ViewModels
         {
             var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
-            if(!availability)
+            var authenticationType = await CrossFingerprint.Current.GetAuthenticationTypeAsync();
+
+            if (!availability)
             {
                 await App.Current.MainPage.DisplayAlert("Erro!", "Leitor biométrico não disponível.", "OK");
                 return;
