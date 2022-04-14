@@ -9,6 +9,6 @@ namespace TelasAmoedo.Models
         public int Codigo { get; set; } 
         public float Valor { get; set; }
 
-        public string icone { get; set; } = "flechamcamp.png";
+        public string Icone { get; set; } = "flechamcamp.png";
     }
 }
