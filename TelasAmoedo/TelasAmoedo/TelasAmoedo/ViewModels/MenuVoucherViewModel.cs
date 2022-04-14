@@ -4,7 +4,8 @@ using System.Text;
 
 namespace TelasAmoedo.ViewModels
 {
-    internal class MenuVoucherViewModel
+    public class MenuVoucherViewModel
     {
+         
     }
 }
