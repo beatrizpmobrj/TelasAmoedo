@@ -40,8 +40,10 @@
                         HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never"
                         VerticalScrollBarVisibility="Never">
             <CollectionView.ItemTemplate>
+     
                 <DataTemplate>
-                    <FlexLayout Grid.Column="0" Grid.ColumnSpan="2" Direction="Row" Padding="6,-2">
+                   
+                    <FlexLayout Grid.Column="0" Grid.ColumnSpan="2" Direction="Row" Padding="6,0">
                         <Grid ColumnDefinitions="180,130,50" RowDefinitions="65" Padding="10" ColumnSpacing="0">
 
                             <Frame Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White"
@@ -56,6 +58,7 @@
                             </Frame>
                         </Grid>
                     </FlexLayout>
+               
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

@@ -24,7 +24,7 @@
 
         <Tab Icon="{OnPlatform Android=wallet}">
             <ShellContent>
-                <Views:MenuPrincipal/>
+                <Views:MenuVoucher/>
             </ShellContent>
         </Tab>
 
