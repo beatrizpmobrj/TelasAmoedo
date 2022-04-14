@@ -11,16 +11,22 @@ namespace TelasAmoedo.ViewModels
     public class MenuPrincipalViewModel
     {
         public ICommand AvancarCampanhas { get; set; }
+        public ICommand AvancarVoucher { get; set; }
 
         public MenuPrincipalViewModel()
         {
             AvancarCampanhas = new Command(async () => await Campanhas());
-
+            AvancarVoucher = new Command(async () => await Voucher());
         }
 
         private async Task Campanhas()
         {
             await Shell.Current.GoToAsync("menucampanhas");
+        }
+
+        private async Task Voucher()
+        {
+            await Shell.Current.GoToAsync("menuvoucher");
         }
     }
 }

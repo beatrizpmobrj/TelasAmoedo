@@ -31,6 +31,7 @@ namespace TelasAmoedo
             Routing.RegisterRoute("confirmacaotelefonepage", typeof(ConfirmacaoTelefone));
             Routing.RegisterRoute("confirmacaocodigopage", typeof(ConfirmacaoCodigo));
             Routing.RegisterRoute("menucampanhas", typeof(MenuCampanhas));
+            Routing.RegisterRoute("menuvoucher", typeof(MenuVoucher));
         }
 
         protected override void OnStart()
