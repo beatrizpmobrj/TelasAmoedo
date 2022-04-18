@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using System.ComponentModel;
 using TelasAmoedo.Views;
 using Xamarin.Essentials;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace TelasAmoedo.ViewModels
 {
@@ -63,9 +64,6 @@ namespace TelasAmoedo.ViewModels
 
         private async Task LoginAsync()
         {
-            //Email = "email@mobrj.br";
-            //Senha = "123456";
-
             await ValidarLogin(Email, Senha);
         }
 
@@ -76,16 +74,16 @@ namespace TelasAmoedo.ViewModels
             if(status != PermissionStatus.Granted)
                 status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
 
-            if (status != PermissionStatus.Granted)
+            if (status != PermissionStatus.Granted) // Se por qualquer motivo o status for diferente de Granted; caso seja negado o uso
                 return;
 
             var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
-            var authenticationType = await CrossFingerprint.Current.GetAuthenticationTypeAsync();
+            var authenticationType = await CrossFingerprint.Current.GetAuthenticationTypeAsync(); // Pegando o tipo para posterior mensagem personalizada
 
             if (!availability)
             {
-                await App.Current.MainPage.DisplayAlert("Erro!", "Leitor biométrico não disponível.", "OK");
+                await App.Current.MainPage.DisplayToastAsync("Leitor biométrico não disponível.", 5000);
                 return;
             }
 
@@ -94,8 +92,7 @@ namespace TelasAmoedo.ViewModels
 
             if (authResult.Authenticated)
             {
-                await App.Current.MainPage.DisplayAlert("Pronto!", "Acesso liberado!", "OK");
-
+                await App.Current.MainPage.DisplayToastAsync("Acesso liberado!", 5000);
                 await Shell.Current.GoToAsync("confirmacaotelefonepage");
             }
         }
@@ -108,7 +105,7 @@ namespace TelasAmoedo.ViewModels
             }
             catch (Exception)
             {
-                await App.Current.MainPage.DisplayAlert("Erro!", "Não encontrado!", "OK");
+                await App.Current.MainPage.DisplayToastAsync("Não encontrado!", 5000);
             }
             await App.Current.MainPage.DisplayAlert("Seu login é:", $"Email: {Email}\r\n Senha: {Senha}", "OK");
         }
@@ -116,7 +113,8 @@ namespace TelasAmoedo.ViewModels
         {
             await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
             await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
-            //await App.Current.MainPage.DisplayAlert("Pronto!", "Login salvo com sucesso!", "OK");
+            await App.Current.MainPage.DisplayToastAsync("Login salvo com sucesso!", 5000);
+
         }
         public async Task ValidarLogin(string email, string senha)
         {
@@ -125,14 +123,15 @@ namespace TelasAmoedo.ViewModels
 
             if (emailValido == email & senhaValida == senha)
             {
-                var answer = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria?", "Sim", "Não");
-                if (answer)
+                var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria?", "Sim", "Não");
+                if (reposta)
                 {
                     var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
                     if (!availability)
                     {
-                        await App.Current.MainPage.DisplayAlert("Erro!", "Leitor biométrico não disponível.", "OK");
+                        await App.Current.MainPage.DisplayToastAsync("Leitor biométrico não disponível.", 5000);
+
                         return;
                     }
                     var authResult = await CrossFingerprint.Current.AuthenticateAsync(
@@ -140,15 +139,18 @@ namespace TelasAmoedo.ViewModels
 
                     if (authResult.Authenticated)
                     {
+                        await this.DisplayToastAsync("Acesso liberado!", 5000);
                         await SalvarLogin();
                         await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
                     }
                 }
                 else
                     await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
-            } else
-                await App.Current.MainPage.DisplayAlert("Atençao!", "Email e/ou senha inválidos", "OK");
-
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayToastAsync("Email e/ou senha inválidos", 5000);
+            }
         }
     }
 }
