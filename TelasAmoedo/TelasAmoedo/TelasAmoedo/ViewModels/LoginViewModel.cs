@@ -54,7 +54,7 @@ namespace TelasAmoedo.ViewModels
             MostrarLoginCommand = new Command(async () => await MostrarLoginAsync());
             LoginCommand = new Command(async () => await LoginAsync());
             CadastroCommand = new Command(async () => await CadastroAsync());
-            SalvarLoginCommand = new Command(async () => await SalvarLogin()); // Icone do Face Id, apenas para teste
+            //SalvarLoginCommand = new Command(async () => await SalvarLogin()); // Icone do Face Id, apenas para teste
         }
 
         private async Task CadastroAsync()
@@ -71,7 +71,7 @@ namespace TelasAmoedo.ViewModels
         {
             var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
-            if(status != PermissionStatus.Granted)
+            if (status != PermissionStatus.Granted)
                 status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
 
             if (status != PermissionStatus.Granted) // Se por qualquer motivo o status for diferente de Granted; caso seja negado o uso
@@ -143,9 +143,15 @@ namespace TelasAmoedo.ViewModels
                         await SalvarLogin();
                         await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
                     }
+                    else
+                    {
+                        await this.DisplayToastAsync("Não autorizado!", 5000);
+                    }
                 }
                 else
+                {
                     await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+                }
             }
             else
             {
