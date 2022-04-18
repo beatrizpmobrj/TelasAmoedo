@@ -26,5 +26,21 @@ namespace TelasAmoedo.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        //Animação para expandir e retrair o expander
+        public enum EasingFunction
+        {
+            BounceIn,
+            BounceOut,
+            CubicIn,
+            CubicOut,
+            CubicInOut,
+            Linear,
+            SinIn,
+            SinOut,
+            SinInOut,
+            SpringIn,
+            SpringOut,
+        }
     }
 }

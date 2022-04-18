@@ -10,9 +10,8 @@
     </ShellItem>
 
     <TabBar Route="MenuPrincipal">
-        <Tab Icon="{OnPlatform Android=home}">
-            <ShellContent>
-                <Views:MenuPrincipal/>
+        <Tab Icon="{OnPlatform Android=home}" NavigationPage.IconColor="Red" >
+            <ShellContent ContentTemplate="{DataTemplate Views:MenuPrincipal}">
             </ShellContent>
         </Tab>
 
