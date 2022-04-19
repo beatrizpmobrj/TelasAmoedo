@@ -6,11 +6,11 @@
              Shell.NavBarIsVisible="False">
 
     <ShellItem Route="Login" FlyoutItemIsVisible="False">
-        <ShellContent ContentTemplate="{DataTemplate Views:Login}" />
+        <ShellContent ContentTemplate="{DataTemplate Views:Login}"/>
     </ShellItem>
 
     <TabBar Route="MenuPrincipal">
-        <Tab Icon="{OnPlatform Android=home}">
+        <Tab Icon="{OnPlatform Android=home}" NavigationPage.BackButtonTitle="MenuPrincipal">
             <ShellContent ContentTemplate="{DataTemplate Views:MenuPrincipal}">
             </ShellContent>
         </Tab>

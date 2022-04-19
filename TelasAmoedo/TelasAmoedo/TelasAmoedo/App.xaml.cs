@@ -14,12 +14,9 @@ namespace TelasAmoedo
         public App()
         {
             InitializeComponent();
-
-        
-
        
 
-            //MainPage = new MainPage();
+            MainPage = new MainPage();
             //MainPage = new MenuPrincipal();
             //MainPage = new Login();
             //MainPage = new Campanha03();
@@ -29,7 +26,7 @@ namespace TelasAmoedo
             //MainPage = new ConfirmacaoTelefone();
             //MainPage = new AppShell();
             //MainPage = new MenuVoucher();
-            MainPage = new Extrato();
+            //MainPage = new Extrato();
 
             Routing.RegisterRoute("cadastropage", typeof(Cadastro));
             Routing.RegisterRoute("menuprincipalpage", typeof(MenuPrincipal));
