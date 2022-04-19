@@ -41,7 +41,7 @@ namespace TelasAmoedo.ViewModels
 
         private async Task Extrato()
         {
-            await Shell.Current.GoToAsync("extrato");
+            await Shell.Current.GoToAsync("//MenuPrincipal/extrato");
         }
     }
 }

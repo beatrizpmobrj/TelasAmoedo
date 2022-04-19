@@ -35,7 +35,7 @@
                    TextColor="White" Grid.Row="1"/>
         </StackLayout>
         <FlexLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"  AlignItems="Center" Direction="Column">
-            <Grid ColumnDefinitions="180,100,50" Padding="20,0,28,10">
+            <Grid ColumnDefinitions="180,100,50" Padding="40,5,20,10">
                 <Label Text="Tipo" Grid.Column="0" HorizontalTextAlignment="Start" FontFamily="Others" FontAttributes="Bold"
                        FontSize="18" TextColor="White"/>
                 <Label Text="Valor" Grid.Column="1" HorizontalOptions="Start" FontFamily="Others" FontAttributes="Bold"
@@ -52,15 +52,15 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="7" >
-                        <Grid ColumnDefinitions="180,130,50" VerticalOptions="StartAndExpand"
+                        <Grid ColumnDefinitions="160,120,70" VerticalOptions="StartAndExpand"
                               HorizontalOptions="FillAndExpand" RowSpacing="10">
-                            <extensions:Expander Grid.Column="0">
+                            <extensions:Expander Grid.Column="0" Grid.ColumnSpan="3">
                                 <extensions:Expander.Header>
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="180"/>
-                                            <ColumnDefinition Width="130"/>
-                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="30"/>
                                         </Grid.ColumnDefinitions>
                                         <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
                                             <Label Text="{Binding Tipo}" TextColor="#800" FontSize="17" />
@@ -69,6 +69,16 @@
                                                      VerticalOptions="Start" Margin="-20,0">
                                             <Label Text="{Binding Valor}" TextColor="#800" FontSize="17" FontFamily="Pontos"/>
                                         </StackLayout>
+                                        <Image Source="expand.png" Grid.Column="2">
+                                            <Image.Triggers>
+                                                <DataTrigger TargetType="Image"
+                                                                 Binding="{Binding Source={RelativeSource AncestorType={x:Type extensions:Expander}}, Path=IsExpanded}"
+                                                                 Value="True">
+                                                    <Setter Property="Source"
+                                                                Value="collapse.png"/>
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
                                     </Grid>
                                 </extensions:Expander.Header>
                                 <Grid HorizontalOptions="FillAndExpand">
