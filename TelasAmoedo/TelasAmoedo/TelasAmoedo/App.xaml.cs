@@ -13,32 +13,8 @@ namespace TelasAmoedo
     {
         public App()
         {
-            InitializeComponent();
-
-        
-
-       
-
-            //MainPage = new MainPage();
-            //MainPage = new MenuPrincipal();
-            //MainPage = new Login();
-            //MainPage = new Campanha03();
-            //MainPage = new Cadastro();
-            //MainPage = new MenuCampanhas();
-            //MainPage = new ConfirmacaoCodigo();
-            //MainPage = new ConfirmacaoTelefone();
-            //MainPage = new AppShell();
-            //MainPage = new MenuVoucher();
-            MainPage = new Extrato();
-
-            Routing.RegisterRoute("cadastropage", typeof(Cadastro));
-            Routing.RegisterRoute("menuprincipalpage", typeof(MenuPrincipal));
-            Routing.RegisterRoute("confirmacaotelefonepage", typeof(ConfirmacaoTelefone));
-            Routing.RegisterRoute("confirmacaocodigopage", typeof(ConfirmacaoCodigo));
-            Routing.RegisterRoute("menucampanhas", typeof(MenuCampanhas));
-            Routing.RegisterRoute("menuvoucher", typeof(MenuVoucher));
-            Routing.RegisterRoute("resgate", typeof(Resgate));
-            Routing.RegisterRoute("extrato", typeof(Extrato));
+            InitializeComponent();         
+            MainPage = new AppShell();
         }
 
     
