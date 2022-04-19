@@ -42,7 +42,6 @@ namespace TelasAmoedo.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs("Senha"));
             }
         }
-        public ICommand LeitorBiometricoCommand { get; set; }
         public ICommand MostrarLoginCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand CadastroCommand { get; set; }
@@ -50,7 +49,6 @@ namespace TelasAmoedo.ViewModels
 
         public LoginViewModel()
         {
-            LeitorBiometricoCommand = new Command(async () => await IsDigitalValidadaAsync());
             MostrarLoginCommand = new Command(async () => await MostrarLoginAsync());
             LoginCommand = new Command(async () => await LoginAsync());
             CadastroCommand = new Command(async () => await CadastroAsync());
@@ -69,30 +67,82 @@ namespace TelasAmoedo.ViewModels
             var _emailSecureStorage = await Xamarin.Essentials.SecureStorage.GetAsync("email");
             var _senhaSecureStorage = await Xamarin.Essentials.SecureStorage.GetAsync("senha");
 
-            if (_emailSecureStorage == emailValido)
+            if(!String.IsNullOrWhiteSpace(Email) && !String.IsNullOrWhiteSpace(Senha)) // Usuário passa email e senha - sem digital
             {
-                Email = _emailSecureStorage;
-
-                var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria?", "Sim", "Não");
-
-                if (reposta)
+                await ValidarLogin(Email, Senha);
+            }
+            else if (!String.IsNullOrWhiteSpace(Email) && String.IsNullOrWhiteSpace(Senha)) // Se passar somente email - com digital
+            {
+                if (Email == emailValido)
                 {
-                    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                    new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+                    // Pode virar um método
+                    var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
-                    if (authResult.Authenticated)
+                    if (!availability)
+                    {
+                        await App.Current.MainPage.DisplayToastAsync("Leitor biométrico não disponível.", 3000);
+                        return; // Sai do método
+                    }
+
+                    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+                        new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+
+                    if (authResult.Authenticated) // Caso não seja autenticado o próprio pacote possui uma mensagem
                     {
                         await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
                     }
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayToastAsync("Insira email e senha.", 5000);
-                    await ValidarLogin(Email, Senha);
+                    await App.Current.MainPage.DisplayToastAsync("Insira seu login corretamente.", 3000);
+                    return;
+                }
+            }
+            else if(String.IsNullOrWhiteSpace(Email) && String.IsNullOrWhiteSpace(Senha)) // Usuário não passa nada, verificar secure storage
+            {
+                if (_emailSecureStorage == emailValido)
+                {
+                    Email = _emailSecureStorage; // Mostra o email na tela
+
+                    // Pode virar um método
+                    var availability = await CrossFingerprint.Current.IsAvailableAsync();
+
+                    if (!availability)
+                    {
+                        await App.Current.MainPage.DisplayToastAsync("Leitor biométrico não disponível.", 3000);
+                        return; // Sai do método
+                    }
+
+                    var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria?", "Sim", "Não");
+
+                    if (reposta)
+                    {
+                        var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+                        new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+
+                        if (authResult.Authenticated)
+                        {
+                            await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+                        }
+                    }
+                    else
+                    {
+                        Email = null; // Retira o email da tela
+                        await App.Current.MainPage.DisplayToastAsync("Insira email e senha.", 2000);
+                        await ValidarLogin(Email, Senha);
+                    }
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayToastAsync("Usuário não encontrado.", 3000);
+                    return;
                 }
             }
             else
-                await ValidarLogin(Email, Senha);
+            {
+                await App.Current.MainPage.DisplayToastAsync("Insira seu login.", 2000);
+            }
+            
         }
 
         private async Task IsDigitalValidadaAsync()
@@ -126,6 +176,8 @@ namespace TelasAmoedo.ViewModels
         }
         private async Task MostrarLoginAsync()
         {
+            await SalvarLogin();
+
             try
             {
                 _email = await Xamarin.Essentials.SecureStorage.GetAsync("email");
@@ -133,7 +185,7 @@ namespace TelasAmoedo.ViewModels
             }
             catch (Exception)
             {
-                await App.Current.MainPage.DisplayToastAsync("Não encontrado!", 5000);
+                await App.Current.MainPage.DisplayToastAsync("Não encontrado!", 3000);
             }
             await App.Current.MainPage.DisplayAlert("Seu login é:", $"Email: {Email}\r\n Senha: {Senha}", "OK");
         }
@@ -141,7 +193,7 @@ namespace TelasAmoedo.ViewModels
         {
             await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
             await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
-            await App.Current.MainPage.DisplayToastAsync("Login salvo com sucesso!", 5000);
+            await App.Current.MainPage.DisplayToastAsync("Login salvo com sucesso!", 3000);
 
         }
         public async Task ValidarLogin(string email, string senha)
@@ -151,20 +203,19 @@ namespace TelasAmoedo.ViewModels
 
             if (!String.IsNullOrWhiteSpace(email) && !String.IsNullOrWhiteSpace(senha))
             {
-                if (emailValido == email & senhaValida == senha)
+                if (emailValido == email && senhaValida == senha)
                 {
                     await App.Current.MainPage.DisplayToastAsync("Acesso liberado!", 2000);
-                    //await SalvarLogin();
                     await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayToastAsync("Email e/ou senha inválidos", 5000);
+                    await App.Current.MainPage.DisplayToastAsync("Email e/ou senha inválidos", 3000);
                 }
             }
             else
             {
-                await App.Current.MainPage.DisplayToastAsync("Digite seu email e senha.", 5000);
+                await App.Current.MainPage.DisplayToastAsync("Digite seu email e senha.", 3000);
             }
         }
     }
