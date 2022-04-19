@@ -10,33 +10,24 @@
     </ShellItem>
 
     <TabBar Route="MenuPrincipal">
-        <Tab Icon="{OnPlatform Android=home}" NavigationPage.BackButtonTitle="MenuPrincipal">
-            <ShellContent ContentTemplate="{DataTemplate Views:MenuPrincipal}">
-            </ShellContent>
+        <Tab Icon="{OnPlatform Android=home}">
+            <ShellContent ContentTemplate="{DataTemplate Views:MenuPrincipal}"/>
         </Tab>
 
         <Tab Icon="{OnPlatform Android=user}">
-            <ShellContent>
-                <Views:MenuPrincipal/>
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate Views:Extrato}"/>
         </Tab>
 
         <Tab Icon="{OnPlatform Android=wallet}">
-            <ShellContent>
-                <Views:MenuVoucher/>
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate Views:MenuVoucher}"/>
         </Tab>
 
         <Tab Icon="{OnPlatform Android=notification}">
-            <ShellContent>
-                <Views:Resgate/>
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate Views:Resgate}"/>
         </Tab>
 
         <Tab Icon="{OnPlatform Android=menu}">
-            <ShellContent>
-                <Views:Campanha03/>
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate Views:Campanha03}"/>
         </Tab>
     </TabBar>
 </Shell>
