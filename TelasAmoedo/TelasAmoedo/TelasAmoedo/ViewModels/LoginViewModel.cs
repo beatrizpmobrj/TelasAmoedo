@@ -57,7 +57,8 @@ namespace TelasAmoedo.ViewModels
 
         private async Task CadastroAsync()
         {
-            await Shell.Current.GoToAsync("cadastropage");
+            //await Shell.Current.GoToAsync("cadastropage");
+            await Shell.Current.GoToAsync("confirmacaotelefonepage");
         }
 
         private async Task LoginAsync()
