@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using System.ComponentModel;
 using TelasAmoedo.Views;
 using Xamarin.Essentials;
+using TelasAmoedo.Services;
 
 namespace TelasAmoedo.ViewModels
 {
@@ -63,10 +64,9 @@ namespace TelasAmoedo.ViewModels
 
         private async Task LoginAsync()
         {
-            //Email = "email@mobrj.br";
-            //Senha = "123456";
-
-            await ValidarLogin(Email, Senha);
+            var servicoApi = new ServicoApi();
+            await servicoApi.LoginAsync(Email, Senha);
+            //await ValidarLogin(Email, Senha);
         }
 
         private async Task IsDigitalValidadaAsync()
