@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Shell.FlyoutBehavior="Disabled"
              x:Class="TelasAmoedo.Views.ConfirmacaoCodigo">
 
@@ -23,28 +24,28 @@
                            FontSize="14" HorizontalOptions="Center" />
                 </StackLayout>
                 <Grid Grid.Row="2" Padding="20,0" RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*">
-                    <StackLayout Grid.Column="0" VerticalOptions="End" Margin="20,0,0,-10">
-                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                    <StackLayout Grid.Column="0" VerticalOptions="End" Margin="15,0,0,-10">
+                        <Entry x:Name="Entry1" Keyboard="Numeric" MaxLength="1" ReturnType="Next" FontSize="40" Margin="0,0,0,-5" xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry2}" />
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
                     </StackLayout>
-                    <StackLayout Grid.Column="1" VerticalOptions="End" Margin="20,0,0,-10">
-                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                    <StackLayout Grid.Column="1" VerticalOptions="End" Margin="15,0,0,-10">
+                        <Entry x:Name="Entry2" Keyboard="Numeric" MaxLength="1" ReturnType="Next" FontSize="40" Margin="0,0,0,-5" xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry3}" />
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
                     </StackLayout>
-                    <StackLayout Grid.Column="2" VerticalOptions="End" Margin="20,0,0,-10">
-                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                    <StackLayout Grid.Column="2" VerticalOptions="End" Margin="15,0,0,-10">
+                        <Entry x:Name="Entry3" Keyboard="Numeric" MaxLength="1" ReturnType="Next" FontSize="40" Margin="0,0,0,-5" xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry4}" />
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
                     </StackLayout>
-                    <StackLayout Grid.Column="4" VerticalOptions="End" Margin="20,0,0,-10">
-                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                    <StackLayout Grid.Column="4" VerticalOptions="End" Margin="15,0,0,-10">
+                        <Entry x:Name="Entry4" Keyboard="Numeric" MaxLength="1" ReturnType="Next" FontSize="40" Margin="0,0,0,-5" xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry5}" />
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
                     </StackLayout>
-                    <StackLayout Grid.Column="5" VerticalOptions="End" Margin="20,0,0,-10">
-                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                    <StackLayout Grid.Column="5" VerticalOptions="End" Margin="15,0,0,-10">
+                        <Entry x:Name="Entry5" Keyboard="Numeric" MaxLength="1" ReturnType="Next" FontSize="40" Margin="0,0,0,-5" xct:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference Entry6}" />
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
                     </StackLayout>
-                    <StackLayout Grid.Column="6" VerticalOptions="End" Margin="20,0,0,-10">
-                        <Entry Keyboard="Numeric" MaxLength="1" FontSize="40" Margin="0,0,0,-5" />
+                    <StackLayout Grid.Column="6" VerticalOptions="End" Margin="15,0,0,-10">
+                        <Entry x:Name="Entry6" Keyboard="Numeric" MaxLength="1" ReturnType="Done" FontSize="40" Margin="0,0,0,-5" />
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="Gray" />
                     </StackLayout>
                 </Grid>
