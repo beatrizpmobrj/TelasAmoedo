@@ -2,13 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:pages="clr-namespace:TelasAmoedo.Base"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
              x:Class="TelasAmoedo.Views.Login">
 
-    <!-- <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Teste" />
-    </ContentPage.ToolbarItems> -->
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+    </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <viewModels:LoginViewModel />
@@ -24,7 +28,14 @@
                         <Label Text="Bem-vindo!" TextColor="White" FontSize="18" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                         <StackLayout Orientation="Horizontal" Margin="0,10">
                             <ImageButton Margin="0,0,10,-10" Source="email" WidthRequest="15" BackgroundColor="Transparent" />
-                            <Entry WidthRequest="270" Margin="0,0,0,-10" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="LightGray" />
+                            <Entry WidthRequest="270" Margin="0,0,0,-10" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="LightGray">
+                                <Entry.Behaviors>
+                                    <xct:EmailValidationBehavior
+                                        DecorationFlags="Trim"
+                                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    />
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="White" />
                         <StackLayout Orientation="Horizontal" Margin="0,10,0,10">
