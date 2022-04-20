@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:pages="clr-namespace:TelasAmoedo.Base"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
              x:Class="TelasAmoedo.Views.Login">

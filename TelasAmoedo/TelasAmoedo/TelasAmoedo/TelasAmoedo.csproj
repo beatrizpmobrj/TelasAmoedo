@@ -17,10 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ObjectModel\ObservableObject.shared.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Fonts\BeauRivage-Regular.ttf" />
     <None Remove="Fonts\JosefinSans-Bold.ttf" />
     <None Remove="Fonts\JosefinSans-LightCopy.ttf" />
@@ -30,10 +26,6 @@
     <EmbeddedResource Include="Fonts\BeauRivage-Regular.ttf" />
     <EmbeddedResource Include="Fonts\JosefinSans-Bold.ttf" />
     <EmbeddedResource Include="Fonts\JosefinSans-LightCopy.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="ObjectModel\ObservableObject.shared.cs" />
   </ItemGroup>
 
   <ItemGroup>
