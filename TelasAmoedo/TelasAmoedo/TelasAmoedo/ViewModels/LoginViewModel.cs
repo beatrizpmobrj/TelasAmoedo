@@ -9,6 +9,7 @@ using System.ComponentModel;
 using TelasAmoedo.Views;
 using Xamarin.Essentials;
 using Xamarin.CommunityToolkit.Extensions;
+using TelasAmoedo.Services;
 
 namespace TelasAmoedo.ViewModels
 {
