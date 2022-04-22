@@ -11,11 +11,30 @@ namespace TelasAmoedo.ViewModels
 {
     public class OpcoesViewModel
     {
-        public ICommand LogoutCommand { get; set; }
+        public bool UsarBiometria
+        {
+            get => Preferences.Get(nameof(UsarBiometria), false);
+            set => Preferences.Set(nameof(UsarBiometria), value);
+        }
+        public ICommand LogoutCommand { get; set; }        
+        public ICommand UsarBiometriaCommand { get; set; }        
 
         public OpcoesViewModel()
         {
             LogoutCommand = new Command(async () => await LogoutAsync());
+            UsarBiometriaCommand = new Command(UsaBiometria);
+        }
+
+        public void UsaBiometria()
+        {
+            if (UsarBiometria)
+            {
+                UsarBiometria = false;
+            }
+            else
+            {
+                UsarBiometria = true;
+            }
         }
 
         public async Task LogoutAsync()

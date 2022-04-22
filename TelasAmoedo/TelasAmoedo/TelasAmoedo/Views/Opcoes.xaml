@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="TelasAmoedo.Views.Opcoes">
 
     <ContentPage.BindingContext>
@@ -31,7 +32,11 @@
             <StackLayout Margin="10" >
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Deseja usar biometria?" TextColor="DarkRed" VerticalOptions="Center" />
-                    <CheckBox BackgroundColor="White" />
+                    <CheckBox BackgroundColor="White">
+                        <CheckBox.Behaviors>
+                            <xct:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UsarBiometriaCommand}" />
+                        </CheckBox.Behaviors>
+                    </CheckBox>
                 </StackLayout>
                 <Button Text="Sair" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" 
                         Grid.Row="2" CornerRadius="7" Margin="0" Command="{Binding LogoutCommand}" VerticalOptions="EndAndExpand" />
