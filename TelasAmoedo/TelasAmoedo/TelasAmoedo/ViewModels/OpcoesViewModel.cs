@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TelasAmoedo.Views;
@@ -9,34 +7,49 @@ using Xamarin.Forms;
 
 namespace TelasAmoedo.ViewModels
 {
-    public class OpcoesViewModel
+    public class OpcoesViewModel : ContentPage, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private bool isChecked;
+        public bool IsChecked
+        {
+            get { return isChecked; }
+            set
+            {
+                if (isChecked != value)
+                {
+                    isChecked = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
+                        App.Current.MainPage.DisplayAlert("Alerta", "Você clicou no Checkbox , seu estado agora é :  " + value, "OK");
+
+                    }
+                }
+            }
+        }
         public bool UsarBiometria
         {
             get => Preferences.Get(nameof(UsarBiometria), false);
             set => Preferences.Set(nameof(UsarBiometria), value);
         }
-        public ICommand LogoutCommand { get; set; }        
-        public ICommand UsarBiometriaCommand { get; set; }        
+        public ICommand LogoutCommand { get; set; }
+        public ICommand SalvarCommand { get; set; }
 
         public OpcoesViewModel()
         {
+            MostrarDados();
             LogoutCommand = new Command(async () => await LogoutAsync());
-            UsarBiometriaCommand = new Command(UsaBiometria);
+            SalvarCommand = new Command(SalvarDados);
         }
-
-        public void UsaBiometria()
+        public void SalvarDados()
         {
-            if (UsarBiometria)
-            {
-                UsarBiometria = false;
-            }
-            else
-            {
-                UsarBiometria = true;
-            }
+            UsarBiometria = IsChecked;
         }
-
+        public void MostrarDados()
+        {
+            IsChecked = UsarBiometria;
+        }
         public async Task LogoutAsync()
         {
             Preferences.Clear();

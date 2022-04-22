@@ -32,12 +32,10 @@
             <StackLayout Margin="10" >
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Deseja usar biometria?" TextColor="DarkRed" VerticalOptions="Center" />
-                    <CheckBox BackgroundColor="White">
-                        <CheckBox.Behaviors>
-                            <xct:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding UsarBiometriaCommand}" />
-                        </CheckBox.Behaviors>
-                    </CheckBox>
+                    <CheckBox BackgroundColor="White" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
                 </StackLayout>
+                <Button Text="Salvar" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" 
+                        Grid.Row="2" CornerRadius="7" Margin="0" Command="{Binding SalvarCommand}" VerticalOptions="EndAndExpand" />
                 <Button Text="Sair" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" 
                         Grid.Row="2" CornerRadius="7" Margin="0" Command="{Binding LogoutCommand}" VerticalOptions="EndAndExpand" />
             </StackLayout>
