@@ -33,7 +33,7 @@
                        FontSize="18" TextColor="White"/>
                 <Label Text="Valor" Grid.Column="1" HorizontalOptions="Start" FontFamily="Others" FontAttributes="Bold"
                        FontSize="18" TextColor="White"/>
-                <Image Source="mcampanhas.png" Grid.Column="2" HorizontalOptions="End" BackgroundColor="White"/>
+                <Image Source="menu" Grid.Column="2" HorizontalOptions="End"/>
             </Grid>
         </FlexLayout>
         <CollectionView ItemsSource="{Binding Itens}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"

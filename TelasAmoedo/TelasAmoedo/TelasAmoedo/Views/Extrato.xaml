@@ -6,6 +6,7 @@
              xmlns:extensions="http://xamarin.com/schemas/2020/toolkit" 
              xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
+
     <ContentPage.BindingContext>
         <viewmodels:ExtratoViewModel/>
     </ContentPage.BindingContext>
@@ -40,7 +41,8 @@
                        FontSize="18" TextColor="White"/>
                 <Label Text="Valor" Grid.Column="1" HorizontalOptions="Start" FontFamily="Others" FontAttributes="Bold"
                        FontSize="18" TextColor="White"/>
-                <Image Source="mcampanhas.png" Grid.Column="2" HorizontalOptions="End" BackgroundColor="White"/>
+                
+                <Image Source="menu" Grid.Column="2" HorizontalOptions="End"/>
             </Grid>
         </FlexLayout>
 
