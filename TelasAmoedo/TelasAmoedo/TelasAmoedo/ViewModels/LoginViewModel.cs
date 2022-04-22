@@ -7,16 +7,31 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
 using TelasAmoedo.Views;
+using Xamarin.Essentials;
+using Xamarin.CommunityToolkit.Extensions;
+using TelasAmoedo.Services;
+using Xamarin.CommunityToolkit;
+using Xamarin.CommunityToolkit.Behaviors;
 
 namespace TelasAmoedo.ViewModels
 {
     public class LoginViewModel : ContentPage, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
+        public bool LembrarUsuario 
+        {
+            get => Preferences.Get(nameof(LembrarUsuario), false);
+            set => Preferences.Set(nameof(LembrarUsuario), value);
+        }
+        public string Usuario
+        {
+            get => Preferences.Get(nameof(Usuario), string.Empty);
+            set => Preferences.Set(nameof(Usuario), value);
+        }
         private string _email;
-        public string Email { 
-            get 
+        public string Email
+        {
+            get
             {
                 return _email;
             }
@@ -27,7 +42,8 @@ namespace TelasAmoedo.ViewModels
             }
         }
         private string _senha;
-        public string Senha { 
+        public string Senha
+        {
             get
             {
                 return _senha;
@@ -38,7 +54,6 @@ namespace TelasAmoedo.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs("Senha"));
             }
         }
-        public ICommand LeitorBiometricoCommand { get; set; }
         public ICommand MostrarLoginCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand CadastroCommand { get; set; }
@@ -46,61 +61,167 @@ namespace TelasAmoedo.ViewModels
 
         public LoginViewModel()
         {
-            LeitorBiometricoCommand = new Command(async () => await IsDigitalValidadaAsync());
-            MostrarLoginCommand = new Command(async () => await MostrarLoginAsync());
+            if (LembrarUsuario == true)
+            {
+                Task.Run(async () => await MostrarLoginAsync());
+            }
+            Task.Run(async () => await LoginAsync());
+            
+
+            //MostrarLoginCommand = new Command(async () => await MostrarLoginAsync());
             LoginCommand = new Command(async () => await LoginAsync());
             CadastroCommand = new Command(async () => await CadastroAsync());
-            SalvarLoginCommand = new Command(async () => await SalvarLogin()); // Icone do Face Id, apenas para teste
         }
 
         private async Task CadastroAsync()
         {
-            await Shell.Current.GoToAsync("cadastropage");
+            await Shell.Current.GoToAsync("confirmacaotelefonepage");
         }
 
         private async Task LoginAsync()
         {
-            await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}"); // Rota absoluta, deve estar na pagina shell
+            string emailValido = "email@mobrj.br";
+            string _emailSecureStorage = await Xamarin.Essentials.SecureStorage.GetAsync("email");
+            string _senhaSecureStorage = await Xamarin.Essentials.SecureStorage.GetAsync("senha");
+            string _isPrimeiroAcesso = await Xamarin.Essentials.SecureStorage.GetAsync("isPrimeiroAcesso");
+
+            if (!String.IsNullOrWhiteSpace(Email) && !String.IsNullOrWhiteSpace(Senha)) // Usuário passa email e senha
+            {
+                if (Email != _emailSecureStorage) // Se email não for o do secure storage, perguntar se quer salvar
+                {
+                    var availability = await CrossFingerprint.Current.IsAvailableAsync();
+
+                    if (availability)
+                    {
+                        var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria para entrar na próxima vez?", "Sim", "Não");
+
+                        if (reposta) // Se o usuário quiser salvar o login
+                        {
+                            LembrarUsuario = true;
+                            await SalvarLogin();
+                            await ValidarLogin(Email, Senha);
+                        }
+                        else // Se o usuário não quiser salvar o login
+                        {
+                            LembrarUsuario = false;
+                            await ValidarLogin(Email, Senha);
+                        }
+                    }
+                    else
+                    {
+                        var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja salvar seu email para entrar na próxima vez?", "Sim", "Não");
+                        if (reposta)
+                        {
+                            LembrarUsuario = true;
+                            await SalvarLogin();
+                            await ValidarLogin(Email, Senha);
+                        }
+                        else
+                        {
+                            LembrarUsuario = false;
+                            await ValidarLogin(Email, Senha);
+                        }
+                    }
+                }
+                else // Se passar email e senha e o email for o do secure storage
+                {
+                    await ValidarLogin(Email, Senha);
+                }
+            }
+            else if (Email == _emailSecureStorage || Email == emailValido) // Se o email for igual ao secure storage e validado pela api, verificar se possui biometria
+            {
+                var availability = await CrossFingerprint.Current.IsAvailableAsync();
+
+                if (availability) // Se possuir biometria, logar com ela
+                {
+                    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+                    new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+
+                    if (authResult.Authenticated) // Caso não seja autenticado o próprio pacote possui uma mensagem
+                    {
+                        await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+                    }
+                }
+                else // Se não possuir biometria, entrar com login e senha
+                {
+                    await ValidarLogin(Email, Senha);
+                }
+            }
+            else
+            {
+                await ValidarLogin(Email, Senha);
+            }
         }
 
-        private async Task IsDigitalValidadaAsync()
-        {
-            var availability = await CrossFingerprint.Current.IsAvailableAsync();
+        //private async Task IsDigitalValidadaAsync()
+        //{
+        //    var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
-            if(!availability)
-            {
-                await App.Current.MainPage.DisplayAlert("Erro!", "Leitor biométrico não disponível.", "OK");
-                return;
-            }
+        //    if (status != PermissionStatus.Granted)
+        //        status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
 
-            var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+        //    if (status != PermissionStatus.Granted) // Se por qualquer motivo o status for diferente de Granted; caso seja negado o uso
+        //        return;
 
-            if (authResult.Authenticated)
-            {
-                await App.Current.MainPage.DisplayAlert("Pronto!", "Acesso liberado!", "OK");
+        //    var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
-                await Shell.Current.GoToAsync("confirmacaotelefonepage");
-            }
-        }
-        private async Task MostrarLoginAsync()
+        //    var authenticationType = await CrossFingerprint.Current.GetAuthenticationTypeAsync(); // Pegando o tipo para posterior mensagem personalizada
+
+        //    if (!availability)
+        //    {
+        //        await App.Current.MainPage.DisplayToastAsync("Leitor biométrico não disponível.", 5000);
+        //        return;
+        //    }
+
+        //    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+        //        new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+
+        //    if (authResult.Authenticated)
+        //    {
+        //        await App.Current.MainPage.DisplayToastAsync("Acesso liberado!", 5000);
+        //        await Shell.Current.GoToAsync("confirmacaotelefonepage");
+        //    }
+        //}
+        private async Task<string> MostrarLoginAsync()
         {
             try
             {
                 _email = await Xamarin.Essentials.SecureStorage.GetAsync("email");
-                _senha = await Xamarin.Essentials.SecureStorage.GetAsync("senha");
             }
             catch (Exception)
             {
-                await App.Current.MainPage.DisplayAlert("Erro!", "Não encontrado!", "OK");
+                _email = "";
             }
-            await App.Current.MainPage.DisplayAlert("Seu login é:", $"Email: {Email}\r\n Senha: {Senha}", "OK");
+            Email = _email;
+            return _email;
         }
         private async Task SalvarLogin()
         {
             await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
             await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
-            await App.Current.MainPage.DisplayAlert("Pronto!", "Login salvo com sucesso!", "OK");
+            LembrarUsuario = true;
+        }
+        public async Task ValidarLogin(string email, string senha)
+        {
+            string emailValido = "email@mobrj.br";
+            string senhaValida = "123456";
+
+            if (!String.IsNullOrWhiteSpace(email) && !String.IsNullOrWhiteSpace(senha))
+            {
+                if (emailValido == email && senhaValida == senha)
+                {
+                    await App.Current.MainPage.DisplayToastAsync("Acesso liberado!", 2000);
+                    await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayToastAsync("Email e/ou senha inválidos", 3000);
+                }
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayToastAsync("Digite seu email e senha.", 3000);
+            }
         }
     }
 }

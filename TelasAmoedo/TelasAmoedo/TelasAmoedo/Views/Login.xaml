@@ -2,13 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
              x:Class="TelasAmoedo.Views.Login">
 
-    <!-- <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Teste" />
-    </ContentPage.ToolbarItems> -->
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+    </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <viewModels:LoginViewModel />
@@ -16,36 +19,39 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <Grid ColumnDefinitions="1*" RowDefinitions="1*, 500, 1*">
+            <Grid ColumnDefinitions="1*" RowDefinitions="*, 450, *">
                 <Image Source="fundoLogin" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Aspect="Fill" />
                 <Frame Grid.Row="1" BackgroundColor="White" Opacity="0.5" CornerRadius="25" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="500" WidthRequest="300" />
-                <Grid Grid.Row="1" Padding="30,30,30,10" ColumnDefinitions="*,*" RowDefinitions="*,*,60,*">
+                <Grid Grid.Row="1" Padding="30,30,30,10" ColumnDefinitions="*,*" RowDefinitions="*,*,*">
                     <StackLayout Grid.Row="0" Margin="15,0,0,0" Grid.ColumnSpan="2">
                         <Label Text="Bem-vindo!" TextColor="White" FontSize="18" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                         <StackLayout Orientation="Horizontal" Margin="0,10">
                             <ImageButton Margin="0,0,10,-10" Source="email" WidthRequest="15" BackgroundColor="Transparent" />
-                            <Entry WidthRequest="270" Margin="0,0,0,-10" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="LightGray" />
+                            <Entry WidthRequest="270" Margin="0,0,0,-10" Text="{Binding Email}" Placeholder="Email" PlaceholderColor="LightGray">
+                                <Entry.Behaviors>
+                                    <xct:EmailValidationBehavior
+                                        DecorationFlags="Trim"
+                                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    />
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="White" />
-                        <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,10">
                             <ImageButton Margin="0,0,10,-10" Source="padlock" WidthRequest="15" BackgroundColor="Transparent" />
                             <Entry Placeholder="Senha" Text="{Binding Senha}" IsPassword="True" WidthRequest="270" Margin="0,0,0,-10" PlaceholderColor="LightGray" />
                         </StackLayout>
                         <BoxView HeightRequest="0.5" WidthRequest="0.5" Color="White" />
                     </StackLayout>
                     <StackLayout Grid.Row="1" Margin="15,0,0,0" Padding="0,35,0,0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                        <CheckBox  />
-                        <Label VerticalOptions="Center" Text="Lembrar" TextColor="LightGray" />
-                        <Button Text="Esqueci a senha?" Command="{Binding MostrarLoginCommand}" TextColor="LightGray" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" />
+                        <!-- <CheckBox  /> -->
+                        <!-- <Label VerticalOptions="Center" Text="Lembrar" TextColor="LightGray" /> -->
+                        <Button Text="Esqueci a senha?" TextColor="LightGray" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" />
                     </StackLayout>
                     <StackLayout Margin="0,10,0,0" Grid.Row="2" Grid.ColumnSpan="2">
                         <Button Text="LOGIN" Command="{Binding LoginCommand}" TextColor="White" HorizontalOptions="Center" WidthRequest="300" HeightRequest="60" BackgroundColor="DarkRed" CornerRadius="7" Opacity="0.7" />
                     </StackLayout>
-                    <StackLayout VerticalOptions="End" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center" >
-                        <ImageButton Margin="0,0,10,0" Source="facialwhite" WidthRequest="53" BackgroundColor="Transparent" />
-                        <ImageButton Source="fingerprintwhite" Command="{Binding LeitorBiometricoCommand}" WidthRequest="70" BackgroundColor="Transparent" />
-                    </StackLayout>
-                    <StackLayout Padding="0" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Padding="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
                         <Label Text="Ainda não tem conta" TextColor="LightGray" VerticalOptions="Center" />
                         <Button Text="Cadastre-se" Command="{Binding CadastroCommand}" TextColor="Red" BackgroundColor="White" FontAttributes="Bold" FontSize="12" CornerRadius="10" HeightRequest="40" />
                     </StackLayout>
