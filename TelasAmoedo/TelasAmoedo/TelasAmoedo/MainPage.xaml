@@ -46,7 +46,7 @@
         </Tab>
 
         <Tab Icon="menu_icon">
-            <ShellContent ContentTemplate="{DataTemplate Views:Campanha03}"/>
+            <ShellContent ContentTemplate="{DataTemplate Views:Opcoes}"/>
         </Tab>
        
     </TabBar>

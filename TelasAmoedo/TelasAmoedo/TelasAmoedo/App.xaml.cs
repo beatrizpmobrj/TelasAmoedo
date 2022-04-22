@@ -28,6 +28,7 @@ namespace TelasAmoedo
             //MainPage = new MenuVoucher();
             //MainPage = new Extrato();
 
+            Routing.RegisterRoute("loginpage", typeof(Login));
             Routing.RegisterRoute("cadastropage", typeof(Cadastro));
             Routing.RegisterRoute("menuprincipalpage", typeof(MenuPrincipal));
             Routing.RegisterRoute("confirmacaotelefonepage", typeof(ConfirmacaoTelefone));

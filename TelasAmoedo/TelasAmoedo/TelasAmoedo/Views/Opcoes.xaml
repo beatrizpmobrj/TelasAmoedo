@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TelasAmoedo.ViewModels"
+             x:Class="TelasAmoedo.Views.Opcoes">
+
+    <ContentPage.BindingContext>
+        <viewModels:OpcoesViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Deseja usar biometria?" />
+            <CheckBox />
+            <Button Text="Sair" Command="{Binding LogoutCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
