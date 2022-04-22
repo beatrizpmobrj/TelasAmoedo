@@ -28,6 +28,7 @@ namespace TelasAmoedo.ViewModels
             get => Preferences.Get(nameof(Usuario), string.Empty);
             set => Preferences.Set(nameof(Usuario), value);
         }
+        public string UsarBiometria { get; set; }
         private string _email;
         public string Email
         {
@@ -61,14 +62,13 @@ namespace TelasAmoedo.ViewModels
 
         public LoginViewModel()
         {
+            var teste = Preferences.Get(nameof(UsarBiometria), false);
             if (LembrarUsuario == true)
             {
                 Task.Run(async () => await MostrarLoginAsync());
             }
             Task.Run(async () => await LoginAsync());
-            
 
-            //MostrarLoginCommand = new Command(async () => await MostrarLoginAsync());
             LoginCommand = new Command(async () => await LoginAsync());
             CadastroCommand = new Command(async () => await CadastroAsync());
         }
@@ -134,13 +134,25 @@ namespace TelasAmoedo.ViewModels
 
                 if (availability) // Se possuir biometria, logar com ela
                 {
-                    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+                    // ToDo - Verificar se o usuário optou por logar com biometria
+                    var _usarBiometria = Preferences.Get(nameof(UsarBiometria), false);
+
+                    if (_usarBiometria)
+                    {
+                        var authResult = await CrossFingerprint.Current.AuthenticateAsync(
                     new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
 
-                    if (authResult.Authenticated) // Caso não seja autenticado o próprio pacote possui uma mensagem
-                    {
-                        await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+                        if (authResult.Authenticated) // Caso não seja autenticado o próprio pacote possui uma mensagem
+                        {
+                            await Shell.Current.GoToAsync($"//{nameof(MenuPrincipal)}");
+                        }
                     }
+                    else // Se o usuário optou por não usar biometria para logar
+                    {
+                        await ValidarLogin(Email, Senha);
+                    }
+
+                    
                 }
                 else // Se não possuir biometria, entrar com login e senha
                 {
@@ -197,8 +209,8 @@ namespace TelasAmoedo.ViewModels
         }
         private async Task SalvarLogin()
         {
-            await Xamarin.Essentials.SecureStorage.SetAsync("email", Email);
-            await Xamarin.Essentials.SecureStorage.SetAsync("senha", Senha);
+            await SecureStorage.SetAsync("email", Email);
+            await SecureStorage.SetAsync("senha", Senha);
             LembrarUsuario = true;
         }
         public async Task ValidarLogin(string email, string senha)

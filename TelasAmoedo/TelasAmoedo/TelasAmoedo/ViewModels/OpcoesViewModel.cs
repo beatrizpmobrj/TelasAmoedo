@@ -22,8 +22,6 @@ namespace TelasAmoedo.ViewModels
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
-                        App.Current.MainPage.DisplayAlert("Alerta", "Você clicou no Checkbox , seu estado agora é :  " + value, "OK");
-
                     }
                 }
             }
@@ -42,6 +40,7 @@ namespace TelasAmoedo.ViewModels
             LogoutCommand = new Command(async () => await LogoutAsync());
             SalvarCommand = new Command(SalvarDados);
         }
+        
         public void SalvarDados()
         {
             UsarBiometria = IsChecked;
