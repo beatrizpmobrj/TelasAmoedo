@@ -7,12 +7,33 @@
     <ContentPage.BindingContext>
         <viewModels:OpcoesViewModel />
     </ContentPage.BindingContext>
-    
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Deseja usar biometria?" />
-            <CheckBox />
-            <Button Text="Sair" Command="{Binding LogoutCommand}" />
+
+    <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" BackgroundColor="#800">
+        <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Aspect="AspectFill" 
+               Opacity="0.2" Source="fundo.png"/>
+        <Label Text="Amoedo" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" 
+               FontFamily="Amoedo" FontSize="50" HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Start" Opacity="100" TextColor="White"/>
+        <FlexLayout Grid.Row="0" Direction="0" AlignItems="Start" Padding="10,20">
+            <Frame HeightRequest="60" WidthRequest="110"
+               Padding="-3" CornerRadius="60" IsClippedToBounds="True">
+                <Image Source="perfil.png"/>
+            </Frame>
+            <StackLayout Spacing="0" Padding="10,-2,-20,-10">
+                <Label Text="Olá, Beatriz" FontFamily="Others" FontAttributes="Bold" FontSize="20" 
+                   TextColor="White"/>
+                <Label Text="Seu último acesso foi em 06/09/2021" FontFamily="Others" TextColor="White"/>
+            </StackLayout>
+        </FlexLayout>
+        
+        <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
+                     HorizontalOptions="CenterAndExpand" Margin="0,-150,0,40">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Deseja usar biometria?" TextColor="White" VerticalOptions="Center" />
+                <CheckBox BackgroundColor="White" />
+            </StackLayout>
+                <Button Text="Sair" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" 
+                        Grid.Row="2" HeightRequest="43" WidthRequest="350" CornerRadius="7" Margin="5" Command="{Binding LogoutCommand}"/>
         </StackLayout>
-    </ContentPage.Content>
+    </Grid>
 </ContentPage>
