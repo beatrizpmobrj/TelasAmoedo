@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TelasAmoedo.Views.MenuCampanhas"
-             >
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions">
 
     <Grid RowDefinitions="70,90,40,550" ColumnDefinitions="*,*" BackgroundColor="#800">
         <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Aspect="AspectFill" 
@@ -34,7 +34,7 @@
                        FontSize="18" TextColor="White"/>
                 <Label Text="Período" Grid.Column="1" HorizontalOptions="Start" FontFamily="Others" FontAttributes="Bold"
                        FontSize="18" TextColor="White"/>
-                <Image Source="menu" Grid.Column="2" HorizontalOptions="End"/>
+                <controls:TintedImage Source="menu" Grid.Column="2" HorizontalOptions="End" TintColor="White"/>
             </Grid>
         </FlexLayout>
         <CollectionView ItemsSource="{Binding Itens}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"

@@ -4,7 +4,8 @@
              x:Class="TelasAmoedo.Views.Extrato"
              xmlns:viewmodels="clr-namespace:TelasAmoedo.ViewModels" 
              xmlns:extensions="http://xamarin.com/schemas/2020/toolkit" 
-             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions">
 
 
     <ContentPage.BindingContext>
@@ -42,7 +43,7 @@
                 <Label Text="Valor" Grid.Column="1" HorizontalOptions="Start" FontFamily="Others" FontAttributes="Bold"
                        FontSize="18" TextColor="White"/>
                 
-                <Image Source="menu" Grid.Column="2" HorizontalOptions="End"/>
+                <controls:TintedImage Source="menu" Grid.Column="2" HorizontalOptions="End" TintColor="White"/>
             </Grid>
         </FlexLayout>
 
