@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TelasAmoedo.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TelasAmoedo.ViewModels
@@ -19,6 +20,8 @@ namespace TelasAmoedo.ViewModels
 
         public async Task LogoutAsync()
         {
+            Preferences.Clear();
+            SecureStorage.RemoveAll();
             await Shell.Current.GoToAsync($"//{nameof(Login)}");
         }
     }
