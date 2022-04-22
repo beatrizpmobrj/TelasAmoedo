@@ -43,76 +43,77 @@
             </Grid>
         </FlexLayout>
 
-        <CollectionView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="25" HorizontalOptions="FillAndExpand"
-                       VerticalOptions="FillAndExpand" SelectionMode="None"
+        <CollectionView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand" 
                        ItemsSource="{Binding ExtratoHeader}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
-            </CollectionView.ItemsLayout>
+           
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    
-                    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="7" >
-                        <Grid ColumnDefinitions="160,120,70" VerticalOptions="StartAndExpand"
-                              HorizontalOptions="FillAndExpand" RowSpacing="10">
-                            <extensions:Expander Grid.Column="0" Grid.ColumnSpan="3">
-                                <extensions:Expander.Header>
-                                    <Grid HorizontalOptions="FillAndExpand">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="150"/>
-                                            <ColumnDefinition Width="120"/>
-                                            <ColumnDefinition Width="30"/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
-                                            <Label Text="{Binding Tipo}" TextColor="#800" FontSize="17" />
-                                        </StackLayout>
-                                        <StackLayout Grid.Column="1" HorizontalOptions="Start"
+                    <FlexLayout Grid.Column="0" Grid.ColumnSpan="2" Direction="Column" Padding="6,0" Grid.Row="3">
+                        <Grid ColumnDefinitions="180,130,50" VerticalOptions="StartAndExpand"
+                              HorizontalOptions="FillAndExpand" ColumnSpacing="0" Padding="10">
+                            <Frame Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White" CornerRadius="7" >
+
+                                <extensions:Expander Grid.Column="0" Grid.ColumnSpan="3">
+                                    <extensions:Expander.Header>
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="120"/>
+                                                <ColumnDefinition Width="30"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
+                                                <Label Text="{Binding Tipo}" TextColor="#800" FontSize="17" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1" HorizontalOptions="Start"
                                                      VerticalOptions="Start" Margin="-20,0">
-                                            <Label Text="{Binding Valor}" TextColor="#800" FontSize="17" FontFamily="Pontos"/>
-                                        </StackLayout>
-                                        <Image Source="expand.png" Grid.Column="2">
-                                            <Image.Triggers>
-                                                <DataTrigger TargetType="Image"
+                                                <Label Text="{Binding Valor}" TextColor="#800" FontSize="17" FontFamily="Pontos"/>
+                                            </StackLayout>
+                                            <Image Source="expand.png" Grid.Column="2">
+                                                <Image.Triggers>
+                                                    <DataTrigger TargetType="Image"
                                                                  Binding="{Binding Source={RelativeSource AncestorType={x:Type extensions:Expander}}, Path=IsExpanded}"
                                                                  Value="True">
-                                                    <Setter Property="Source"
+                                                        <Setter Property="Source"
                                                                 Value="collapse.png"/>
-                                                </DataTrigger>
-                                            </Image.Triggers>
-                                        </Image>
-                                    </Grid>
-                                </extensions:Expander.Header>
-                                <Grid HorizontalOptions="FillAndExpand">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="180"/>
-                                        <ColumnDefinition Width="130"/>
-                                    </Grid.ColumnDefinitions>
-                                 
-                                    <StackLayout Grid.Column="0" Spacing="10" Padding="0,10,0,0">
-                                        <StackLayout BindableLayout.ItemsSource="{Binding ExtratoContent}"
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+                                        </Grid>
+                                    </extensions:Expander.Header>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="180"/>
+                                            <ColumnDefinition Width="130"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Column="0" Spacing="10" Padding="0,10,0,0">
+                                            <StackLayout BindableLayout.ItemsSource="{Binding ExtratoContent}"
                                                      HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
-                                            <BindableLayout.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackLayout>
-                                                        <Label Text="Número de Operação:" TextColor="#800" FontAttributes="Bold"/>
-                                                        <Label Text="{Binding NumOp}" TextColor="#800"/>
-                                                        <Label Text="Data de Expiração:" TextColor="#800" FontAttributes="Bold"/>
-                                                        <Label Text="{Binding DataEx}" TextColor="#800"/>
-                                                        <Label Text="Data de Operação:" TextColor="#800" FontAttributes="Bold"/>
-                                                        <Label Text="{Binding DataOp}" TextColor="#800"/>
-                                                        <Label Text="Pontos:" TextColor="#800" FontAttributes="Bold"/>
-                                                        <Label Text="{Binding Pontos}" TextColor="#800"/>
-                                                        <Label Text="Produtos:" TextColor="#800" FontAttributes="Bold"/>
-                                                        <Label Text="{Binding Produtos}" TextColor="#800"/>
-                                                    </StackLayout>
-                                                </DataTemplate>
-                                            </BindableLayout.ItemTemplate>
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout>
+                                                            <Label Text="Número de Operação:" TextColor="#800" FontAttributes="Bold"/>
+                                                            <Label Text="{Binding NumOp}" TextColor="#800"/>
+                                                            <Label Text="Data de Expiração:" TextColor="#800" FontAttributes="Bold"/>
+                                                            <Label Text="{Binding DataEx}" TextColor="#800"/>
+                                                            <Label Text="Data de Operação:" TextColor="#800" FontAttributes="Bold"/>
+                                                            <Label Text="{Binding DataOp}" TextColor="#800"/>
+                                                            <Label Text="Pontos:" TextColor="#800" FontAttributes="Bold"/>
+                                                            <Label Text="{Binding Pontos}" TextColor="#800"/>
+                                                            <Label Text="Produtos:" TextColor="#800" FontAttributes="Bold"/>
+                                                            <Label Text="{Binding Produtos}" TextColor="#800"/>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
-                                </Grid>
-                            </extensions:Expander>
+                                    </Grid>
+                                </extensions:Expander>
+
+                            </Frame>
                         </Grid>
-                    </Frame>
+                    </FlexLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
