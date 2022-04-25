@@ -26,6 +26,20 @@ namespace TelasAmoedo.Droid
 
         public void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
         {
+            var currentContentPage = (Shell.Current.CurrentPage as ContentPage);
+            if (currentContentPage == null)
+            {
+                return;
+            }
+
+            if (currentContentPage.Content != null && currentContentPage.Content.BackgroundColor != Color.Transparent)
+            {
+                (bottomView.Parent as LinearLayout)?.SetBackgroundColor(currentContentPage.Content.BackgroundColor.ToAndroid());
+            }
+            else
+            {
+                (bottomView.Parent as LinearLayout)?.SetBackgroundColor(currentContentPage.BackgroundColor.ToAndroid());
+            }
 
             bottomView.SetBackgroundResource(Resource.Drawable.bottombackground);
         }

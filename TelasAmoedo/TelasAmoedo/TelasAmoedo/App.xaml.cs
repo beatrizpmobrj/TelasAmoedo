@@ -14,7 +14,7 @@ namespace TelasAmoedo
         public App()
         {
             InitializeComponent();
-       
+
 
             MainPage = new MainPage();
             //MainPage = new MenuPrincipal();
@@ -27,6 +27,7 @@ namespace TelasAmoedo
             //MainPage = new AppShell();
             //MainPage = new MenuVoucher();
             //MainPage = new Extrato();
+            //MainPage = new Resgate();
 
             Routing.RegisterRoute("cadastropage", typeof(Cadastro));
             Routing.RegisterRoute("menuprincipalpage", typeof(MenuPrincipal));
