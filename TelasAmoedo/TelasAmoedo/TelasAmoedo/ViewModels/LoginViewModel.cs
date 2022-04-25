@@ -18,7 +18,7 @@ namespace TelasAmoedo.ViewModels
     public class LoginViewModel : ContentPage, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public bool LembrarUsuario 
+        public bool LembrarUsuario
         {
             get => Preferences.Get(nameof(LembrarUsuario), false);
             set => Preferences.Set(nameof(LembrarUsuario), value);
@@ -62,7 +62,6 @@ namespace TelasAmoedo.ViewModels
 
         public LoginViewModel()
         {
-            var teste = Preferences.Get(nameof(UsarBiometria), false);
             if (LembrarUsuario == true)
             {
                 Task.Run(async () => await MostrarLoginAsync());
@@ -140,7 +139,7 @@ namespace TelasAmoedo.ViewModels
                     if (_usarBiometria)
                     {
                         var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                    new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
+                            new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
 
                         if (authResult.Authenticated) // Caso não seja autenticado o próprio pacote possui uma mensagem
                         {
@@ -152,7 +151,7 @@ namespace TelasAmoedo.ViewModels
                         await ValidarLogin(Email, Senha);
                     }
 
-                    
+
                 }
                 else // Se não possuir biometria, entrar com login e senha
                 {
