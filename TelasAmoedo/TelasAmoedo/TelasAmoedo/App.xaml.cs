@@ -37,6 +37,7 @@ namespace TelasAmoedo
             Routing.RegisterRoute("menuvoucher", typeof(MenuVoucher));
             Routing.RegisterRoute("resgate", typeof(Resgate));
             Routing.RegisterRoute("extrato", typeof(Extrato));
+            Routing.RegisterRoute("resgate", typeof(Resgate));
         }
 
     
