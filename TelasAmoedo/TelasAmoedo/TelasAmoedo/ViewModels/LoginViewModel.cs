@@ -18,6 +18,7 @@ namespace TelasAmoedo.ViewModels
     public class LoginViewModel : ContentPage, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         public bool LembrarUsuario
         {
             get => Preferences.Get(nameof(LembrarUsuario), false);
@@ -28,7 +29,7 @@ namespace TelasAmoedo.ViewModels
             get => Preferences.Get(nameof(Usuario), string.Empty);
             set => Preferences.Set(nameof(Usuario), value);
         }
-        public string UsarBiometria { get; set; }
+        public bool UsarBiometria;
         private string _email;
         public string Email
         {
@@ -96,7 +97,7 @@ namespace TelasAmoedo.ViewModels
 
                         if (reposta) // Se o usuário quiser salvar o login
                         {
-                            LembrarUsuario = true;
+                            Preferences.Set(nameof(UsarBiometria), true);
                             await SalvarLogin();
                             await ValidarLogin(Email, Senha);
                         }
@@ -111,7 +112,6 @@ namespace TelasAmoedo.ViewModels
                         var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja salvar seu email para entrar na próxima vez?", "Sim", "Não");
                         if (reposta)
                         {
-                            LembrarUsuario = true;
                             await SalvarLogin();
                             await ValidarLogin(Email, Senha);
                         }
