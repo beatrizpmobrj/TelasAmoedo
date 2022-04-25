@@ -32,7 +32,7 @@
             <StackLayout Margin="10" >
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Deseja usar biometria?" TextColor="DarkRed" VerticalOptions="Center" />
-                    <CheckBox BackgroundColor="White" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                    <Switch IsToggled="{Binding IsToggled, Mode=TwoWay}" />
                 </StackLayout>
                 <Button Text="Salvar" BackgroundColor="White" FontFamily="Pontos" FontSize="15" TextColor="#800" 
                         Grid.Row="2" CornerRadius="7" Margin="0" Command="{Binding SalvarCommand}" VerticalOptions="EndAndExpand" />

@@ -10,18 +10,19 @@ namespace TelasAmoedo.ViewModels
     public class OpcoesViewModel : ContentPage, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private bool isChecked;
-        public bool IsChecked
+
+        private bool _isToggled;
+        public bool IsToggled
         {
-            get { return isChecked; }
+            get { return _isToggled; }
             set
             {
-                if (isChecked != value)
+                if (_isToggled != value)
                 {
-                    isChecked = value;
+                    _isToggled = value;
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
+                        PropertyChanged(this, new PropertyChangedEventArgs("IsToggled"));
                     }
                 }
             }
@@ -36,19 +37,20 @@ namespace TelasAmoedo.ViewModels
 
         public OpcoesViewModel()
         {
-            MostrarDados();
+            //MostrarDados();
+            IsToggled = UsarBiometria;
             LogoutCommand = new Command(async () => await LogoutAsync());
             SalvarCommand = new Command(SalvarDados);
         }
         
         public void SalvarDados()
         {
-            UsarBiometria = IsChecked;
+            UsarBiometria = IsToggled;
         }
-        public void MostrarDados()
-        {
-            IsChecked = UsarBiometria;
-        }
+        //public void MostrarDados()
+        //{
+        //    IsToggled = UsarBiometria;
+        //}
         public async Task LogoutAsync()
         {
             Preferences.Clear();

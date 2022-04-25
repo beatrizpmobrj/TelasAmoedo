@@ -91,7 +91,7 @@ namespace TelasAmoedo.ViewModels
                 {
                     var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
-                    if (availability)
+                    if (availability) //Se possuir viabilidade de biometria
                     {
                         var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja usar biometria para entrar na próxima vez?", "Sim", "Não");
 
@@ -107,7 +107,7 @@ namespace TelasAmoedo.ViewModels
                             await ValidarLogin(Email, Senha);
                         }
                     }
-                    else
+                    else //Se não possuir viabilidade de biometria
                     {
                         var reposta = await App.Current.MainPage.DisplayAlert("Alerta!", "Deseja salvar seu email para entrar na próxima vez?", "Sim", "Não");
                         if (reposta)
