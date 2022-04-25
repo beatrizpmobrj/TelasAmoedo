@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TelasAmoedo.Views;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -40,12 +41,13 @@ namespace TelasAmoedo.ViewModels
             //MostrarDados();
             IsToggled = UsarBiometria;
             LogoutCommand = new Command(async () => await LogoutAsync());
-            SalvarCommand = new Command(SalvarDados);
+            SalvarCommand = new Command(async () => await SalvarDados());
         }
         
-        public void SalvarDados()
+        public async Task SalvarDados()
         {
             UsarBiometria = IsToggled;
+            await App.Current.MainPage.DisplayToastAsync("Salvo com sucesso!", 2000);
         }
         //public void MostrarDados()
         //{
