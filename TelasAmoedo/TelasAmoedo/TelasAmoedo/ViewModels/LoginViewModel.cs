@@ -133,8 +133,7 @@ namespace TelasAmoedo.ViewModels
 
                 if (availability) // Se possuir biometria, logar com ela
                 {
-                    // ToDo - Verificar se o usuário optou por logar com biometria
-                    var _usarBiometria = Preferences.Get(nameof(UsarBiometria), false);
+                    var _usarBiometria = Preferences.Get(nameof(UsarBiometria), false); // Verificar se o usuário optou por logar com biometria
 
                     if (_usarBiometria)
                     {
@@ -150,8 +149,6 @@ namespace TelasAmoedo.ViewModels
                     {
                         await ValidarLogin(Email, Senha);
                     }
-
-
                 }
                 else // Se não possuir biometria, entrar com login e senha
                 {
@@ -174,24 +171,7 @@ namespace TelasAmoedo.ViewModels
         //    if (status != PermissionStatus.Granted) // Se por qualquer motivo o status for diferente de Granted; caso seja negado o uso
         //        return;
 
-        //    var availability = await CrossFingerprint.Current.IsAvailableAsync();
-
         //    var authenticationType = await CrossFingerprint.Current.GetAuthenticationTypeAsync(); // Pegando o tipo para posterior mensagem personalizada
-
-        //    if (!availability)
-        //    {
-        //        await App.Current.MainPage.DisplayToastAsync("Leitor biométrico não disponível.", 5000);
-        //        return;
-        //    }
-
-        //    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-        //        new AuthenticationRequestConfiguration("Acesso Biométrico", "Confirme sua impressão digital para acessar sua conta."));
-
-        //    if (authResult.Authenticated)
-        //    {
-        //        await App.Current.MainPage.DisplayToastAsync("Acesso liberado!", 5000);
-        //        await Shell.Current.GoToAsync("confirmacaotelefonepage");
-        //    }
         //}
         private async Task<string> MostrarLoginAsync()
         {
