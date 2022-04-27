@@ -40,13 +40,13 @@ namespace TelasAmoedo.ViewModels
             await Shell.Current.GoToAsync(menu);
         }
 
-        public async Task CaptureImage()
+        private async Task CaptureImage()
         {
             var photo = await MediaPicker.CapturePhotoAsync();
             var stream = await LoadPhotoAsync(photo);
         }
 
-        public async Task ChangeImage()
+        private async Task ChangeImage()
         {
             var photo = await MediaPicker.PickPhotoAsync();
             var stream = await LoadPhotoAsync(photo);
@@ -75,6 +75,7 @@ namespace TelasAmoedo.ViewModels
                 if (value != null)
                 {
                     _imagePath = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("ImagePath"));
                    
                 }
             }

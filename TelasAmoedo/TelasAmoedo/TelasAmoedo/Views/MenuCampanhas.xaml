@@ -65,7 +65,6 @@
                                 <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="White" CornerRadius="7">
                                     <Image Source="{Binding Icone}"/>
                                 </Frame>
-
                             </Grid>
                         </FlexLayout>
                     </DataTemplate>
