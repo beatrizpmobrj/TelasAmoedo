@@ -18,11 +18,7 @@
         <FlexLayout Grid.Row="0" Direction="0" AlignItems="Start" Padding="10,20">
             <Frame HeightRequest="60" WidthRequest="110"
                Padding="-3" CornerRadius="60" IsClippedToBounds="True">
-                <Image Source="perfil.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer/>
-                    </Image.GestureRecognizers>
-                </Image>
+                <Image Source="perfil.png"/>
             </Frame>
             <StackLayout Spacing="0" Padding="10,-2,-20,-10">
                 <Label Text="Olá, Beatriz" FontFamily="Others" FontAttributes="Bold" FontSize="20" 
@@ -76,7 +72,5 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </FlexLayout>
-
-
     </Grid>
 </ContentPage>

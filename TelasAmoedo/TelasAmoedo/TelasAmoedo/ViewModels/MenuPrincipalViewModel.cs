@@ -75,14 +75,10 @@ namespace TelasAmoedo.ViewModels
                 if (value != null)
                 {
                     _imagePath = value;
-                    OnPropertyChanged();
+                   
                 }
             }
         }
 
-        private void OnPropertyChanged()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

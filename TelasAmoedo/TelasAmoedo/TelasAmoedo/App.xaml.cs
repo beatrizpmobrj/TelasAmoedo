@@ -16,8 +16,8 @@ namespace TelasAmoedo
             InitializeComponent();
 
 
-            MainPage = new MainPage();
-            //MainPage = new MenuPrincipal();
+            //MainPage = new MainPage();
+            MainPage = new MenuPrincipal();
             //MainPage = new Login();
             //MainPage = new Campanha03();
             //MainPage = new Cadastro();
