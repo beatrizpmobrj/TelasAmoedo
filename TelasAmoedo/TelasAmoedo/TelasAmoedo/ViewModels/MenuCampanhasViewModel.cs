@@ -16,6 +16,8 @@ namespace TelasAmoedo.ViewModels
         public ObservableCollection<ItemsMenuCampanhas> Itens { get; set; }
         public ICommand AvancarDetalhesCampanha { get; set; }
 
+        
+
         public MenuCampanhasViewModel()
         {
             Itens = new ObservableCollection<ItemsMenuCampanhas>();

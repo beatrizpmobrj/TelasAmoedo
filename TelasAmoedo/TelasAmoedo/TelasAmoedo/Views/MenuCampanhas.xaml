@@ -18,7 +18,11 @@
         <FlexLayout Grid.Row="0" Direction="0" AlignItems="Start" Padding="10,20">
             <Frame HeightRequest="60" WidthRequest="110"
                Padding="-3" CornerRadius="60" IsClippedToBounds="True">
-                <Image Source="perfil.png"/>
+                <Image Source="perfil.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer/>
+                    </Image.GestureRecognizers>
+                </Image>
             </Frame>
             <StackLayout Spacing="0" Padding="10,-2,-20,-10">
                 <Label Text="Olá, Beatriz" FontFamily="Others" FontAttributes="Bold" FontSize="20" 
@@ -42,7 +46,8 @@
                 <controls:TintedImage Source="menu" Grid.Column="2" HorizontalOptions="End" TintColor="White"/>
             </Grid>
         </FlexLayout>
-        <FlexLayout x:Name="Page" Grid.Column="0" Grid.ColumnSpan="2" Direction="Row" Padding="6,0" Grid.Row="3">
+        <FlexLayout x:Name="Page" Grid.Column="0" Grid.ColumnSpan="2" Direction="Row" Padding="6,0" Grid.Row="3
+                    ">
             <CollectionView ItemsSource="{Binding Itens}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                         HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never"
                         VerticalScrollBarVisibility="Never">
