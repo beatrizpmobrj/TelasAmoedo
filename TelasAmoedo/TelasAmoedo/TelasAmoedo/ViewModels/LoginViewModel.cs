@@ -12,10 +12,11 @@ using Xamarin.CommunityToolkit.Extensions;
 using TelasAmoedo.Services;
 using Xamarin.CommunityToolkit;
 using Xamarin.CommunityToolkit.Behaviors;
+using TelasAmoedo.Interfaces;
 
 namespace TelasAmoedo.ViewModels
 {
-    public class LoginViewModel : ContentPage, INotifyPropertyChanged
+    public class LoginViewModel : ContentPage, INotifyPropertyChanged, ILogin
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -78,7 +79,7 @@ namespace TelasAmoedo.ViewModels
             await Shell.Current.GoToAsync("confirmacaotelefonepage");
         }
 
-        private async Task LoginAsync()
+        public async Task LoginAsync()
         {
             string emailValido = "email@mobrj.br";
             string _emailSecureStorage = await Xamarin.Essentials.SecureStorage.GetAsync("email");
@@ -186,7 +187,7 @@ namespace TelasAmoedo.ViewModels
             Email = _email;
             return _email;
         }
-        private async Task SalvarLogin()
+        public async Task SalvarLogin()
         {
             await SecureStorage.SetAsync("email", Email);
             await SecureStorage.SetAsync("senha", Senha);
