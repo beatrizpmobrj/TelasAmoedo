@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using TelasAmoedo.Models;
+using Xamarin.Forms;
 
 namespace TelasAmoedo.ViewModels
 {
@@ -11,6 +14,9 @@ namespace TelasAmoedo.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<ItemsMenuCampanhas> Itens { get; set; }
+        public ICommand AvancarDetalhesCampanha { get; set; }
+
+        
 
         public MenuCampanhasViewModel()
         {
@@ -22,6 +28,13 @@ namespace TelasAmoedo.ViewModels
             Itens.Add(new ItemsMenuCampanhas { Nome = "Campanha 02"});
             Itens.Add(new ItemsMenuCampanhas { Nome = "Campanha 01"});
 
+            AvancarDetalhesCampanha = new Command(async () => await RedirectToDetailsCampanha());
+
+        }
+
+        private async Task RedirectToDetailsCampanha()
+        {
+            await Shell.Current.GoToAsync("detalhescampanha");
         }
     }
 }
