@@ -1,11 +1,11 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Plugin.Fingerprint;
 using Android.Views;
+
 
 namespace TelasAmoedo.Droid
 {
@@ -22,6 +22,9 @@ namespace TelasAmoedo.Droid
             LoadApplication(new App());
             //Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
             Window.SetStatusBarColor(Android.Graphics.Color.IndianRed); //here
+
+          
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

@@ -20,7 +20,7 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.UploadImage, Source={x:Reference Photo}}"/>
                 </Frame.GestureRecognizers>
-                <Image Source="{Binding ImagePath}" HeightRequest="1080" WidthRequest="1080" Aspect="Fill" />
+                <Image Source="{Binding ImagePath}" Aspect="AspectFill" />
                 <!-- <Image Source="perfil.png"/>-->
             </Frame>
             <StackLayout Spacing="0" Padding="10,-2,-20,-10">

@@ -14,7 +14,7 @@ namespace TelasAmoedo.Droid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.2.0.155")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.2.4.160")]
 	public partial class Resource
 	{
 		
@@ -25138,28 +25138,31 @@ namespace TelasAmoedo.Droid
 			public const int preference_list_divider_material = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int shield = 2131230885;
+			public const int profile = 2131230885;
 			
 			// aapt resource value: 0x7F0800A6
-			public const int test_custom_background = 2131230886;
+			public const int shield = 2131230886;
 			
 			// aapt resource value: 0x7F0800A7
-			public const int tooltip_frame_dark = 2131230887;
+			public const int test_custom_background = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int tooltip_frame_light = 2131230888;
+			public const int tooltip_frame_dark = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int user = 2131230889;
+			public const int tooltip_frame_light = 2131230889;
 			
 			// aapt resource value: 0x7F0800AA
-			public const int user_icon = 2131230890;
+			public const int user = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int wallet = 2131230891;
+			public const int user_icon = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int wallet_icon = 2131230892;
+			public const int wallet = 2131230892;
+			
+			// aapt resource value: 0x7F0800AD
+			public const int wallet_icon = 2131230893;
 			
 			static Drawable()
 			{

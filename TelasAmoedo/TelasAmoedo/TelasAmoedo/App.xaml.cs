@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using TelasAmoedo.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -40,10 +41,10 @@ namespace TelasAmoedo
             Routing.RegisterRoute("extrato", typeof(Extrato));
             Routing.RegisterRoute("resgate", typeof(Resgate));
             Routing.RegisterRoute("detalhescampanha", typeof(Campanha03));
+
         }
 
-    
-
+      
         protected override void OnStart()
         {
         }
