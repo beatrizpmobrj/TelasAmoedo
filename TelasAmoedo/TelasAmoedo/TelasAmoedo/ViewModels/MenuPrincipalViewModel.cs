@@ -20,8 +20,17 @@ namespace TelasAmoedo.ViewModels
         public ICommand AvancarExtrato { get; set; }
         public ICommand UploadImage { get; set; }
         public ICommand GetImage { get; set; }
+        public ICommand SaveImage { get; set; }
 
-        public string _imagePath = "profile.png";
+        public string _imagePath = "profile.png"; //Perfil de imagem em branco
+
+        public string ImageRecord
+        {
+
+            get => Preferences.Get(nameof(ImageRecord), _imagePath);
+            set => Preferences.Set(nameof(ImageRecord), value);
+
+        }
 
         public MenuPrincipalViewModel()
         {
@@ -31,6 +40,16 @@ namespace TelasAmoedo.ViewModels
             AvancarExtrato = new Command(async () => await RedirectToMenu("extrato"));
             UploadImage = new Command(async () => await ChangeImage());
             GetImage = new Command(async () => await CaptureImage());
+            SaveImage = new Command(async () => await SalvarImage());
+
+            ImagePath = ImageRecord;
+
+        }
+
+        //Método para associar via command e salvar a imagem escolhida como definitiva
+        public async Task SalvarImage()
+        {
+            ImageRecord = ImagePath;
         }
 
 
@@ -49,6 +68,7 @@ namespace TelasAmoedo.ViewModels
         {
             var photo = await MediaPicker.PickPhotoAsync();
             var stream = await LoadPhotoAsync(photo);
+          
 
         }
 
@@ -56,7 +76,7 @@ namespace TelasAmoedo.ViewModels
         {
             if (photo == null)
             {
-                return null; //Inserir imagem sem foto
+                return null;
             }
 
             var newFile = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
@@ -73,20 +93,18 @@ namespace TelasAmoedo.ViewModels
 
             set
             {
-                if (value != null)
+                if (_imagePath != value)
                 {
                     _imagePath = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs("ImagePath"));
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("ImagePath"));
+                    }
+                   ;
 
                 }
 
             }
-        }
-
-        public string ImageRecord
-        {
-            get => Preferences.Get(nameof(ImageRecord), _imagePath);
-            set => Preferences.Set(nameof(ImageRecord), _imagePath);
         }
 
     }

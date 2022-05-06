@@ -25,7 +25,11 @@
             </Frame>
             <StackLayout Spacing="0" Padding="10,-2,-20,-10">
                 <Label Text="Olá, Beatriz" FontFamily="Others" FontAttributes="Bold" FontSize="20" 
-                   TextColor="White"/>
+                   TextColor="White" x:Name="Save">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.SaveImage, Source={x:Reference Save}}"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 <Label Text="Seu último acesso foi em 06/09/2021" FontFamily="Others" TextColor="White"/>
             </StackLayout>
         </FlexLayout>
@@ -74,9 +78,9 @@
             </Grid>
         </StackLayout>
 
-       
 
-       
+
+
 
 
     </Grid>
