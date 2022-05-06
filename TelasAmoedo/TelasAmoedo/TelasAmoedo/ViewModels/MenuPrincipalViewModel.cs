@@ -40,14 +40,14 @@ namespace TelasAmoedo.ViewModels
             AvancarExtrato = new Command(async () => await RedirectToMenu("extrato"));
             UploadImage = new Command(async () => await ChangeImage());
             GetImage = new Command(async () => await CaptureImage());
-            SaveImage = new Command(async () => await SalvarImage());
+            SaveImage = new Command(async () => await RecordImage());
 
             ImagePath = ImageRecord;
 
         }
 
         //Método para associar via command e salvar a imagem escolhida como definitiva
-        public async Task SalvarImage()
+        public async Task RecordImage()
         {
             ImageRecord = ImagePath;
         }
